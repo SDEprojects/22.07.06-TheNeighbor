@@ -1,0 +1,656 @@
+[
+  {
+    "name": "basement",
+    "description": "a dimly lit room beneath the neighbor's home",
+    "exit": [
+      {
+        "name": "window",
+        "direction": "north",
+        "description": "a dingy window leading outside",
+        "leadsTo": "outside"
+      },
+      {
+        "name": "stairs",
+        "direction": "west",
+        "description": "a set of brittle looking stairs",
+        "leadsTo": "dining room"
+      },
+      {
+        "name": "door",
+        "direction": "northwest",
+        "description": "a strange-looking door leading to an unknown room",
+        "leadsTo": "utility closet"
+      }
+    ]
+  },
+  {
+    "name": "breakfast room",
+    "description": "a tidy breakfast nook with a small square table",
+    "exit": [
+      {
+        "name": "",
+        "direction": "north",
+        "description": "",
+        "leadsTo": ""
+      },
+      {
+        "name": "",
+        "direction": "west",
+        "description": "",
+        "leadsTo": ""
+      },
+      {
+        "name": "",
+        "direction": "east",
+        "description": "",
+        "leadsTo": ""
+      },
+      {
+        "name": "",
+        "direction": "south",
+        "description": "",
+        "leadsTo": ""
+      }
+    ]
+  },
+  {
+    "name": "kitchen",
+    "description": "",
+    "exit": [
+      {
+        "name": "",
+        "direction": "north",
+        "description": "",
+        "leadsTo": ""
+      },
+      {
+        "name": "",
+        "direction": "west",
+        "description": "",
+        "leadsTo": ""
+      },
+      {
+        "name": "",
+        "direction": "east",
+        "description": "",
+        "leadsTo": ""
+      },
+      {
+        "name": "",
+        "direction": "south",
+        "description": "",
+        "leadsTo": ""
+      }
+    ]
+  },
+  {
+    "name": "guest room",
+    "description": "",
+    "exit": [
+      {
+        "name": "",
+        "direction": "north",
+        "description": "",
+        "leadsTo": ""
+      },
+      {
+        "name": "",
+        "direction": "west",
+        "description": "",
+        "leadsTo": ""
+      },
+      {
+        "name": "",
+        "direction": "east",
+        "description": "",
+        "leadsTo": ""
+      },
+      {
+        "name": "",
+        "direction": "south",
+        "description": "",
+        "leadsTo": ""
+      }
+    ]
+  },
+  {
+    "name": "downstairs bathroom",
+    "description": "",
+    "exit": [
+      {
+        "name": "",
+        "direction": "north",
+        "description": "",
+        "leadsTo": ""
+      },
+      {
+        "name": "",
+        "direction": "west",
+        "description": "",
+        "leadsTo": ""
+      },
+      {
+        "name": "",
+        "direction": "east",
+        "description": "",
+        "leadsTo": ""
+      },
+      {
+        "name": "",
+        "direction": "south",
+        "description": "",
+        "leadsTo": ""
+      }
+    ]
+  },
+  {
+    "name": "laundry room",
+    "description": "",
+    "exit": [
+      {
+        "name": "",
+        "direction": "north",
+        "description": "",
+        "leadsTo": ""
+      },
+      {
+        "name": "",
+        "direction": "west",
+        "description": "",
+        "leadsTo": ""
+      },
+      {
+        "name": "",
+        "direction": "east",
+        "description": "",
+        "leadsTo": ""
+      },
+      {
+        "name": "",
+        "direction": "south",
+        "description": "",
+        "leadsTo": ""
+      }
+    ]
+  },
+  {
+    "name": "garage",
+    "description": "",
+    "exit": [
+      {
+        "name": "",
+        "direction": "north",
+        "description": "",
+        "leadsTo": ""
+      },
+      {
+        "name": "",
+        "direction": "west",
+        "description": "",
+        "leadsTo": ""
+      },
+      {
+        "name": "",
+        "direction": "east",
+        "description": "",
+        "leadsTo": ""
+      },
+      {
+        "name": "",
+        "direction": "south",
+        "description": "",
+        "leadsTo": ""
+      }
+    ]
+  },
+  {
+    "name": "foyer",
+    "description": "",
+    "exit": [
+      {
+        "name": "",
+        "direction": "north",
+        "description": "",
+        "leadsTo": ""
+      },
+      {
+        "name": "",
+        "direction": "west",
+        "description": "",
+        "leadsTo": ""
+      },
+      {
+        "name": "",
+        "direction": "east",
+        "description": "",
+        "leadsTo": ""
+      },
+      {
+        "name": "",
+        "direction": "south",
+        "description": "",
+        "leadsTo": ""
+      }
+    ]
+  },
+  {
+    "name": "dining room",
+    "description": "",
+    "exit": [
+      {
+        "name": "",
+        "direction": "north",
+        "description": "",
+        "leadsTo": ""
+      },
+      {
+        "name": "",
+        "direction": "west",
+        "description": "",
+        "leadsTo": ""
+      },
+      {
+        "name": "",
+        "direction": "east",
+        "description": "",
+        "leadsTo": ""
+      },
+      {
+        "name": "",
+        "direction": "south",
+        "description": "",
+        "leadsTo": ""
+      }
+    ]
+  },
+  {
+    "name": "family room",
+    "description": "",
+    "exit": [
+      {
+        "name": "",
+        "direction": "north",
+        "description": "",
+        "leadsTo": ""
+      },
+      {
+        "name": "",
+        "direction": "west",
+        "description": "",
+        "leadsTo": ""
+      },
+      {
+        "name": "",
+        "direction": "east",
+        "description": "",
+        "leadsTo": ""
+      },
+      {
+        "name": "",
+        "direction": "south",
+        "description": "",
+        "leadsTo": ""
+      }
+    ]
+  },
+  {
+    "name": "living room",
+    "description": "",
+    "exit": [
+      {
+        "name": "",
+        "direction": "north",
+        "description": "",
+        "leadsTo": ""
+      },
+      {
+        "name": "",
+        "direction": "west",
+        "description": "",
+        "leadsTo": ""
+      },
+      {
+        "name": "",
+        "direction": "east",
+        "description": "",
+        "leadsTo": ""
+      },
+      {
+        "name": "",
+        "direction": "south",
+        "description": "",
+        "leadsTo": ""
+      }
+    ]
+  },
+  {
+    "name": "balcony",
+    "description": "",
+    "exit": [
+      {
+        "name": "",
+        "direction": "north",
+        "description": "",
+        "leadsTo": ""
+      },
+      {
+        "name": "",
+        "direction": "west",
+        "description": "",
+        "leadsTo": ""
+      },
+      {
+        "name": "",
+        "direction": "east",
+        "description": "",
+        "leadsTo": ""
+      },
+      {
+        "name": "",
+        "direction": "south",
+        "description": "",
+        "leadsTo": ""
+      }
+    ]
+  },
+  {
+    "name": "hallway east",
+    "description": "",
+    "exit": [
+      {
+        "name": "",
+        "direction": "north",
+        "description": "",
+        "leadsTo": ""
+      },
+      {
+        "name": "",
+        "direction": "west",
+        "description": "",
+        "leadsTo": ""
+      },
+      {
+        "name": "",
+        "direction": "east",
+        "description": "",
+        "leadsTo": ""
+      },
+      {
+        "name": "",
+        "direction": "south",
+        "description": "",
+        "leadsTo": ""
+      }
+    ]
+  },
+  {
+    "name": "bedroom two",
+    "description": "",
+    "exit": [
+      {
+        "name": "",
+        "direction": "north",
+        "description": "",
+        "leadsTo": ""
+      },
+      {
+        "name": "",
+        "direction": "west",
+        "description": "",
+        "leadsTo": ""
+      },
+      {
+        "name": "",
+        "direction": "east",
+        "description": "",
+        "leadsTo": ""
+      },
+      {
+        "name": "",
+        "direction": "south",
+        "description": "",
+        "leadsTo": ""
+      }
+    ]
+  },
+  {
+    "name": "bedroom three",
+    "description": "",
+    "exit": [
+      {
+        "name": "",
+        "direction": "north",
+        "description": "",
+        "leadsTo": ""
+      },
+      {
+        "name": "",
+        "direction": "west",
+        "description": "",
+        "leadsTo": ""
+      },
+      {
+        "name": "",
+        "direction": "east",
+        "description": "",
+        "leadsTo": ""
+      },
+      {
+        "name": "",
+        "direction": "south",
+        "description": "",
+        "leadsTo": ""
+      }
+    ]
+  },
+  {
+    "name": "hallway west",
+    "description": "",
+    "exit": [
+      {
+        "name": "",
+        "direction": "north",
+        "description": "",
+        "leadsTo": ""
+      },
+      {
+        "name": "",
+        "direction": "west",
+        "description": "",
+        "leadsTo": ""
+      },
+      {
+        "name": "",
+        "direction": "east",
+        "description": "",
+        "leadsTo": ""
+      },
+      {
+        "name": "",
+        "direction": "south",
+        "description": "",
+        "leadsTo": ""
+      }
+    ]
+  },
+  {
+    "name": "bedroom four",
+    "description": "",
+    "exit": [
+      {
+        "name": "",
+        "direction": "north",
+        "description": "",
+        "leadsTo": ""
+      },
+      {
+        "name": "",
+        "direction": "west",
+        "description": "",
+        "leadsTo": ""
+      },
+      {
+        "name": "",
+        "direction": "east",
+        "description": "",
+        "leadsTo": ""
+      },
+      {
+        "name": "",
+        "direction": "south",
+        "description": "",
+        "leadsTo": ""
+      }
+    ]
+  },
+  {
+    "name": "bedroom five",
+    "description": "",
+    "exit": [
+      {
+        "name": "",
+        "direction": "north",
+        "description": "",
+        "leadsTo": ""
+      },
+      {
+        "name": "",
+        "direction": "west",
+        "description": "",
+        "leadsTo": ""
+      },
+      {
+        "name": "",
+        "direction": "east",
+        "description": "",
+        "leadsTo": ""
+      },
+      {
+        "name": "",
+        "direction": "south",
+        "description": "",
+        "leadsTo": ""
+      }
+    ]
+  },
+  {
+    "name": "upstairs bathroom",
+    "description": "",
+    "exit": [
+      {
+        "name": "",
+        "direction": "north",
+        "description": "",
+        "leadsTo": ""
+      },
+      {
+        "name": "",
+        "direction": "west",
+        "description": "",
+        "leadsTo": ""
+      },
+      {
+        "name": "",
+        "direction": "east",
+        "description": "",
+        "leadsTo": ""
+      },
+      {
+        "name": "",
+        "direction": "south",
+        "description": "",
+        "leadsTo": ""
+      }
+    ]
+  },
+  {
+    "name": "master bedroom",
+    "description": "",
+    "exit": [
+      {
+        "name": "",
+        "direction": "north",
+        "description": "",
+        "leadsTo": ""
+      },
+      {
+        "name": "",
+        "direction": "west",
+        "description": "",
+        "leadsTo": ""
+      },
+      {
+        "name": "",
+        "direction": "east",
+        "description": "",
+        "leadsTo": ""
+      },
+      {
+        "name": "",
+        "direction": "south",
+        "description": "",
+        "leadsTo": ""
+      }
+    ]
+  },
+  {
+    "name": "master bathroom",
+    "description": "",
+    "exit": [
+      {
+        "name": "",
+        "direction": "north",
+        "description": "",
+        "leadsTo": ""
+      },
+      {
+        "name": "",
+        "direction": "west",
+        "description": "",
+        "leadsTo": ""
+      },
+      {
+        "name": "",
+        "direction": "east",
+        "description": "",
+        "leadsTo": ""
+      },
+      {
+        "name": "",
+        "direction": "south",
+        "description": "",
+        "leadsTo": ""
+      }
+    ]
+  },
+  {
+    "name": "master closet",
+    "description": "",
+    "exit": [
+      {
+        "name": "",
+        "direction": "north",
+        "description": "",
+        "leadsTo": ""
+      },
+      {
+        "name": "",
+        "direction": "west",
+        "description": "",
+        "leadsTo": ""
+      },
+      {
+        "name": "",
+        "direction": "east",
+        "description": "",
+        "leadsTo": ""
+      },
+      {
+        "name": "",
+        "direction": "south",
+        "description": "",
+        "leadsTo": ""
+      }
+    ]
+  }
+]
