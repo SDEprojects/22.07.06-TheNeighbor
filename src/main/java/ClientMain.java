@@ -13,11 +13,21 @@ public class ClientMain {
             // create object mapper instance
             ObjectMapper mapper = new ObjectMapper();
 
-            // convert JSON array to list of books
+            // convert JSON array to list of items
             List<Items> items = Arrays.asList(mapper.readValue(Paths.get("src/resources/items.json").toFile(), Items[].class));
 
-            // print books
+            // convert JSON array to list of locations
+            List<Location> locations = Arrays.asList(mapper.readValue(Paths.get("src/resources/locations.json").toFile(),Location[].class));
+
+            // print items
             items.forEach(System.out::println);
+
+            System.out.println("********************");
+            //print locations
+            locations.forEach(System.out::println);
+
+
+
 
         } catch (Exception ex) {
             ex.printStackTrace();
