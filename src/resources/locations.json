@@ -1,55 +1,58 @@
 [
   {
     "name": "basement",
-    "description": "a dimly lit room beneath the neighbor's home",
+    "description": "You are in the dimly lit basement beneath the neighbor's home. The aroma of must and mildew fill your senses.",
     "exit": [
       {
-        "north":"oustide"
+        "north": "breakfast room"
       },
       {
-        "south":""
+        "south": "outside"
       },
       {
-        "east":""
+        "east": "-"
       },
       {
-        "west":""
+        "west": "utility closet"
       }
     ]
   },
   {
     "name": "breakfast room",
-    "description": "a tidy breakfast nook with a small square table",
+    "description": "A small, tidy breakfast nook with a small square table and chairs.",
     "exit": [
       {
-        "north":"oustide"
+        "north": "outside"
       },
       {
-        "south":""
+        "south": "foyer"
       },
       {
-        "east":""
+        "east": "family room"
       },
       {
-        "west":""
+        "west": "kitchen"
+      },
+      {
+        "stairs": "basement"
       }
     ]
   },
   {
     "name": "kitchen",
-    "description": "",
+    "description": "You are in a rather luxurious kitchen with a center island. Cabinets adorne the west and north walls.",
     "exit": [
       {
-        "north":"oustide"
+        "north": "-"
       },
       {
-        "south":""
+        "south": ""
       },
       {
-        "east":""
+        "east": ""
       },
       {
-        "west":""
+        "west": ""
       }
     ]
   },
@@ -58,16 +61,16 @@
     "description": "",
     "exit": [
       {
-        "north":"oustide"
+        "north": "oustide"
       },
       {
-        "south":""
+        "south": ""
       },
       {
-        "east":""
+        "east": ""
       },
       {
-        "west":""
+        "west": ""
       }
     ]
   },
@@ -76,16 +79,16 @@
     "description": "",
     "exit": [
       {
-        "north":"oustide"
+        "north": "oustide"
       },
       {
-        "south":""
+        "south": ""
       },
       {
-        "east":""
+        "east": ""
       },
       {
-        "west":""
+        "west": ""
       }
     ]
   },
@@ -94,16 +97,16 @@
     "description": "",
     "exit": [
       {
-        "north":"oustide"
+        "north": "oustide"
       },
       {
-        "south":""
+        "south": ""
       },
       {
-        "east":""
+        "east": ""
       },
       {
-        "west":""
+        "west": ""
       }
     ]
   },
@@ -112,16 +115,16 @@
     "description": "",
     "exit": [
       {
-        "north":"oustide"
+        "north": "oustide"
       },
       {
-        "south":""
+        "south": ""
       },
       {
-        "east":""
+        "east": ""
       },
       {
-        "west":""
+        "west": ""
       }
     ]
   },
@@ -130,16 +133,19 @@
     "description": "",
     "exit": [
       {
-        "north":"oustide"
+        "north": "oustide"
       },
       {
-        "south":""
+        "south": ""
       },
       {
-        "east":""
+        "east": ""
       },
       {
-        "west":""
+        "west": ""
+      },
+      {
+        "stairs": "balcony"
       }
     ]
   },
@@ -148,16 +154,16 @@
     "description": "",
     "exit": [
       {
-        "north":"oustide"
+        "north": "oustide"
       },
       {
-        "south":""
+        "south": ""
       },
       {
-        "east":""
+        "east": ""
       },
       {
-        "west":""
+        "west": ""
       }
     ]
   },
@@ -166,16 +172,16 @@
     "description": "",
     "exit": [
       {
-        "north":"oustide"
+        "north": "oustide"
       },
       {
-        "south":""
+        "south": ""
       },
       {
-        "east":""
+        "east": ""
       },
       {
-        "west":""
+        "west": ""
       }
     ]
   },
@@ -184,16 +190,16 @@
     "description": "",
     "exit": [
       {
-        "north":"oustide"
+        "north": "oustide"
       },
       {
-        "south":""
+        "south": ""
       },
       {
-        "east":""
+        "east": ""
       },
       {
-        "west":""
+        "west": ""
       }
     ]
   },
@@ -202,16 +208,16 @@
     "description": "",
     "exit": [
       {
-        "north":"oustide"
+        "north": "oustide"
       },
       {
-        "south":""
+        "south": ""
       },
       {
-        "east":""
+        "east": ""
       },
       {
-        "west":""
+        "west": ""
       }
     ]
   },
@@ -220,16 +226,16 @@
     "description": "",
     "exit": [
       {
-        "north":"oustide"
+        "north": "oustide"
       },
       {
-        "south":""
+        "south": ""
       },
       {
-        "east":""
+        "east": ""
       },
       {
-        "west":""
+        "west": ""
       }
     ]
   },
@@ -238,16 +244,16 @@
     "description": "",
     "exit": [
       {
-        "north":"oustide"
+        "north": "oustide"
       },
       {
-        "south":""
+        "south": ""
       },
       {
-        "east":""
+        "east": ""
       },
       {
-        "west":""
+        "west": ""
       }
     ]
   },
@@ -256,16 +262,16 @@
     "description": "",
     "exit": [
       {
-        "north":"oustide"
+        "north": "oustide"
       },
       {
-        "south":""
+        "south": ""
       },
       {
-        "east":""
+        "east": ""
       },
       {
-        "west":""
+        "west": ""
       }
     ]
   },
@@ -274,16 +280,16 @@
     "description": "",
     "exit": [
       {
-        "north":"oustide"
+        "north": "oustide"
       },
       {
-        "south":""
+        "south": ""
       },
       {
-        "east":""
+        "east": ""
       },
       {
-        "west":""
+        "west": ""
       }
     ]
   },
@@ -292,16 +298,16 @@
     "description": "",
     "exit": [
       {
-        "north":"oustide"
+        "north": "oustide"
       },
       {
-        "south":""
+        "south": ""
       },
       {
-        "east":""
+        "east": ""
       },
       {
-        "west":""
+        "west": ""
       }
     ]
   },
@@ -310,16 +316,16 @@
     "description": "",
     "exit": [
       {
-        "north":"oustide"
+        "north": "oustide"
       },
       {
-        "south":""
+        "south": ""
       },
       {
-        "east":""
+        "east": ""
       },
       {
-        "west":""
+        "west": ""
       }
     ]
   },
@@ -328,16 +334,16 @@
     "description": "",
     "exit": [
       {
-        "north":"oustide"
+        "north": "oustide"
       },
       {
-        "south":""
+        "south": ""
       },
       {
-        "east":""
+        "east": ""
       },
       {
-        "west":""
+        "west": ""
       }
     ]
   },
@@ -346,16 +352,16 @@
     "description": "",
     "exit": [
       {
-        "north":"oustide"
+        "north": "oustide"
       },
       {
-        "south":""
+        "south": ""
       },
       {
-        "east":""
+        "east": ""
       },
       {
-        "west":""
+        "west": ""
       }
     ]
   },
@@ -364,16 +370,16 @@
     "description": "",
     "exit": [
       {
-        "north":"oustide"
+        "north": "oustide"
       },
       {
-        "south":""
+        "south": ""
       },
       {
-        "east":""
+        "east": ""
       },
       {
-        "west":""
+        "west": ""
       }
     ]
   },
@@ -382,16 +388,16 @@
     "description": "",
     "exit": [
       {
-        "north":"oustide"
+        "north": "oustide"
       },
       {
-        "south":""
+        "south": ""
       },
       {
-        "east":""
+        "east": ""
       },
       {
-        "west":""
+        "west": ""
       }
     ]
   }
