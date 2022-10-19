@@ -4,22 +4,16 @@
     "description": "a dimly lit room beneath the neighbor's home",
     "exit": [
       {
-        "name": "window",
-        "direction": "north",
-        "description": "a dingy window leading outside",
-        "leadsTo": "outside"
+        "north":"oustide"
       },
       {
-        "name": "stairs",
-        "direction": "west",
-        "description": "a set of brittle looking stairs",
-        "leadsTo": "dining room"
+        "south":""
       },
       {
-        "name": "door",
-        "direction": "northwest",
-        "description": "a strange-looking door leading to an unknown room",
-        "leadsTo": "utility closet"
+        "east":""
+      },
+      {
+        "west":""
       }
     ]
   },
@@ -28,28 +22,16 @@
     "description": "a tidy breakfast nook with a small square table",
     "exit": [
       {
-        "name": "",
-        "direction": "north",
-        "description": "",
-        "leadsTo": ""
+        "north":"oustide"
       },
       {
-        "name": "",
-        "direction": "west",
-        "description": "",
-        "leadsTo": ""
+        "south":""
       },
       {
-        "name": "",
-        "direction": "east",
-        "description": "",
-        "leadsTo": ""
+        "east":""
       },
       {
-        "name": "",
-        "direction": "south",
-        "description": "",
-        "leadsTo": ""
+        "west":""
       }
     ]
   },
@@ -58,28 +40,16 @@
     "description": "",
     "exit": [
       {
-        "name": "",
-        "direction": "north",
-        "description": "",
-        "leadsTo": ""
+        "north":"oustide"
       },
       {
-        "name": "",
-        "direction": "west",
-        "description": "",
-        "leadsTo": ""
+        "south":""
       },
       {
-        "name": "",
-        "direction": "east",
-        "description": "",
-        "leadsTo": ""
+        "east":""
       },
       {
-        "name": "",
-        "direction": "south",
-        "description": "",
-        "leadsTo": ""
+        "west":""
       }
     ]
   },
@@ -88,28 +58,16 @@
     "description": "",
     "exit": [
       {
-        "name": "",
-        "direction": "north",
-        "description": "",
-        "leadsTo": ""
+        "north":"oustide"
       },
       {
-        "name": "",
-        "direction": "west",
-        "description": "",
-        "leadsTo": ""
+        "south":""
       },
       {
-        "name": "",
-        "direction": "east",
-        "description": "",
-        "leadsTo": ""
+        "east":""
       },
       {
-        "name": "",
-        "direction": "south",
-        "description": "",
-        "leadsTo": ""
+        "west":""
       }
     ]
   },
@@ -118,28 +76,16 @@
     "description": "",
     "exit": [
       {
-        "name": "",
-        "direction": "north",
-        "description": "",
-        "leadsTo": ""
+        "north":"oustide"
       },
       {
-        "name": "",
-        "direction": "west",
-        "description": "",
-        "leadsTo": ""
+        "south":""
       },
       {
-        "name": "",
-        "direction": "east",
-        "description": "",
-        "leadsTo": ""
+        "east":""
       },
       {
-        "name": "",
-        "direction": "south",
-        "description": "",
-        "leadsTo": ""
+        "west":""
       }
     ]
   },
@@ -148,28 +94,16 @@
     "description": "",
     "exit": [
       {
-        "name": "",
-        "direction": "north",
-        "description": "",
-        "leadsTo": ""
+        "north":"oustide"
       },
       {
-        "name": "",
-        "direction": "west",
-        "description": "",
-        "leadsTo": ""
+        "south":""
       },
       {
-        "name": "",
-        "direction": "east",
-        "description": "",
-        "leadsTo": ""
+        "east":""
       },
       {
-        "name": "",
-        "direction": "south",
-        "description": "",
-        "leadsTo": ""
+        "west":""
       }
     ]
   },
@@ -178,28 +112,16 @@
     "description": "",
     "exit": [
       {
-        "name": "",
-        "direction": "north",
-        "description": "",
-        "leadsTo": ""
+        "north":"oustide"
       },
       {
-        "name": "",
-        "direction": "west",
-        "description": "",
-        "leadsTo": ""
+        "south":""
       },
       {
-        "name": "",
-        "direction": "east",
-        "description": "",
-        "leadsTo": ""
+        "east":""
       },
       {
-        "name": "",
-        "direction": "south",
-        "description": "",
-        "leadsTo": ""
+        "west":""
       }
     ]
   },
@@ -208,28 +130,16 @@
     "description": "",
     "exit": [
       {
-        "name": "",
-        "direction": "north",
-        "description": "",
-        "leadsTo": ""
+        "north":"oustide"
       },
       {
-        "name": "",
-        "direction": "west",
-        "description": "",
-        "leadsTo": ""
+        "south":""
       },
       {
-        "name": "",
-        "direction": "east",
-        "description": "",
-        "leadsTo": ""
+        "east":""
       },
       {
-        "name": "",
-        "direction": "south",
-        "description": "",
-        "leadsTo": ""
+        "west":""
       }
     ]
   },
@@ -238,28 +148,16 @@
     "description": "",
     "exit": [
       {
-        "name": "",
-        "direction": "north",
-        "description": "",
-        "leadsTo": ""
+        "north":"oustide"
       },
       {
-        "name": "",
-        "direction": "west",
-        "description": "",
-        "leadsTo": ""
+        "south":""
       },
       {
-        "name": "",
-        "direction": "east",
-        "description": "",
-        "leadsTo": ""
+        "east":""
       },
       {
-        "name": "",
-        "direction": "south",
-        "description": "",
-        "leadsTo": ""
+        "west":""
       }
     ]
   },
@@ -268,28 +166,16 @@
     "description": "",
     "exit": [
       {
-        "name": "",
-        "direction": "north",
-        "description": "",
-        "leadsTo": ""
+        "north":"oustide"
       },
       {
-        "name": "",
-        "direction": "west",
-        "description": "",
-        "leadsTo": ""
+        "south":""
       },
       {
-        "name": "",
-        "direction": "east",
-        "description": "",
-        "leadsTo": ""
+        "east":""
       },
       {
-        "name": "",
-        "direction": "south",
-        "description": "",
-        "leadsTo": ""
+        "west":""
       }
     ]
   },
@@ -298,28 +184,16 @@
     "description": "",
     "exit": [
       {
-        "name": "",
-        "direction": "north",
-        "description": "",
-        "leadsTo": ""
+        "north":"oustide"
       },
       {
-        "name": "",
-        "direction": "west",
-        "description": "",
-        "leadsTo": ""
+        "south":""
       },
       {
-        "name": "",
-        "direction": "east",
-        "description": "",
-        "leadsTo": ""
+        "east":""
       },
       {
-        "name": "",
-        "direction": "south",
-        "description": "",
-        "leadsTo": ""
+        "west":""
       }
     ]
   },
@@ -328,28 +202,16 @@
     "description": "",
     "exit": [
       {
-        "name": "",
-        "direction": "north",
-        "description": "",
-        "leadsTo": ""
+        "north":"oustide"
       },
       {
-        "name": "",
-        "direction": "west",
-        "description": "",
-        "leadsTo": ""
+        "south":""
       },
       {
-        "name": "",
-        "direction": "east",
-        "description": "",
-        "leadsTo": ""
+        "east":""
       },
       {
-        "name": "",
-        "direction": "south",
-        "description": "",
-        "leadsTo": ""
+        "west":""
       }
     ]
   },
@@ -358,28 +220,16 @@
     "description": "",
     "exit": [
       {
-        "name": "",
-        "direction": "north",
-        "description": "",
-        "leadsTo": ""
+        "north":"oustide"
       },
       {
-        "name": "",
-        "direction": "west",
-        "description": "",
-        "leadsTo": ""
+        "south":""
       },
       {
-        "name": "",
-        "direction": "east",
-        "description": "",
-        "leadsTo": ""
+        "east":""
       },
       {
-        "name": "",
-        "direction": "south",
-        "description": "",
-        "leadsTo": ""
+        "west":""
       }
     ]
   },
@@ -388,28 +238,16 @@
     "description": "",
     "exit": [
       {
-        "name": "",
-        "direction": "north",
-        "description": "",
-        "leadsTo": ""
+        "north":"oustide"
       },
       {
-        "name": "",
-        "direction": "west",
-        "description": "",
-        "leadsTo": ""
+        "south":""
       },
       {
-        "name": "",
-        "direction": "east",
-        "description": "",
-        "leadsTo": ""
+        "east":""
       },
       {
-        "name": "",
-        "direction": "south",
-        "description": "",
-        "leadsTo": ""
+        "west":""
       }
     ]
   },
@@ -418,28 +256,16 @@
     "description": "",
     "exit": [
       {
-        "name": "",
-        "direction": "north",
-        "description": "",
-        "leadsTo": ""
+        "north":"oustide"
       },
       {
-        "name": "",
-        "direction": "west",
-        "description": "",
-        "leadsTo": ""
+        "south":""
       },
       {
-        "name": "",
-        "direction": "east",
-        "description": "",
-        "leadsTo": ""
+        "east":""
       },
       {
-        "name": "",
-        "direction": "south",
-        "description": "",
-        "leadsTo": ""
+        "west":""
       }
     ]
   },
@@ -448,28 +274,16 @@
     "description": "",
     "exit": [
       {
-        "name": "",
-        "direction": "north",
-        "description": "",
-        "leadsTo": ""
+        "north":"oustide"
       },
       {
-        "name": "",
-        "direction": "west",
-        "description": "",
-        "leadsTo": ""
+        "south":""
       },
       {
-        "name": "",
-        "direction": "east",
-        "description": "",
-        "leadsTo": ""
+        "east":""
       },
       {
-        "name": "",
-        "direction": "south",
-        "description": "",
-        "leadsTo": ""
+        "west":""
       }
     ]
   },
@@ -478,28 +292,16 @@
     "description": "",
     "exit": [
       {
-        "name": "",
-        "direction": "north",
-        "description": "",
-        "leadsTo": ""
+        "north":"oustide"
       },
       {
-        "name": "",
-        "direction": "west",
-        "description": "",
-        "leadsTo": ""
+        "south":""
       },
       {
-        "name": "",
-        "direction": "east",
-        "description": "",
-        "leadsTo": ""
+        "east":""
       },
       {
-        "name": "",
-        "direction": "south",
-        "description": "",
-        "leadsTo": ""
+        "west":""
       }
     ]
   },
@@ -508,28 +310,16 @@
     "description": "",
     "exit": [
       {
-        "name": "",
-        "direction": "north",
-        "description": "",
-        "leadsTo": ""
+        "north":"oustide"
       },
       {
-        "name": "",
-        "direction": "west",
-        "description": "",
-        "leadsTo": ""
+        "south":""
       },
       {
-        "name": "",
-        "direction": "east",
-        "description": "",
-        "leadsTo": ""
+        "east":""
       },
       {
-        "name": "",
-        "direction": "south",
-        "description": "",
-        "leadsTo": ""
+        "west":""
       }
     ]
   },
@@ -538,28 +328,16 @@
     "description": "",
     "exit": [
       {
-        "name": "",
-        "direction": "north",
-        "description": "",
-        "leadsTo": ""
+        "north":"oustide"
       },
       {
-        "name": "",
-        "direction": "west",
-        "description": "",
-        "leadsTo": ""
+        "south":""
       },
       {
-        "name": "",
-        "direction": "east",
-        "description": "",
-        "leadsTo": ""
+        "east":""
       },
       {
-        "name": "",
-        "direction": "south",
-        "description": "",
-        "leadsTo": ""
+        "west":""
       }
     ]
   },
@@ -568,28 +346,16 @@
     "description": "",
     "exit": [
       {
-        "name": "",
-        "direction": "north",
-        "description": "",
-        "leadsTo": ""
+        "north":"oustide"
       },
       {
-        "name": "",
-        "direction": "west",
-        "description": "",
-        "leadsTo": ""
+        "south":""
       },
       {
-        "name": "",
-        "direction": "east",
-        "description": "",
-        "leadsTo": ""
+        "east":""
       },
       {
-        "name": "",
-        "direction": "south",
-        "description": "",
-        "leadsTo": ""
+        "west":""
       }
     ]
   },
@@ -598,28 +364,16 @@
     "description": "",
     "exit": [
       {
-        "name": "",
-        "direction": "north",
-        "description": "",
-        "leadsTo": ""
+        "north":"oustide"
       },
       {
-        "name": "",
-        "direction": "west",
-        "description": "",
-        "leadsTo": ""
+        "south":""
       },
       {
-        "name": "",
-        "direction": "east",
-        "description": "",
-        "leadsTo": ""
+        "east":""
       },
       {
-        "name": "",
-        "direction": "south",
-        "description": "",
-        "leadsTo": ""
+        "west":""
       }
     ]
   },
@@ -628,28 +382,16 @@
     "description": "",
     "exit": [
       {
-        "name": "",
-        "direction": "north",
-        "description": "",
-        "leadsTo": ""
+        "north":"oustide"
       },
       {
-        "name": "",
-        "direction": "west",
-        "description": "",
-        "leadsTo": ""
+        "south":""
       },
       {
-        "name": "",
-        "direction": "east",
-        "description": "",
-        "leadsTo": ""
+        "east":""
       },
       {
-        "name": "",
-        "direction": "south",
-        "description": "",
-        "leadsTo": ""
+        "west":""
       }
     ]
   }
