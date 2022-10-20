@@ -1,4 +1,5 @@
 import com.fasterxml.jackson.databind.ObjectMapper;
+import netscape.javascript.JSObject;
 
 import java.nio.file.Paths;
 import java.util.Arrays;
@@ -8,6 +9,8 @@ import java.util.Scanner;
 public class ClientMain {
     public static void main(String[] args) {
         System.out.println("This is going to be the launching point of our application");
+        Scanner myObj = new Scanner(System.in);
+
 
 
         try {
@@ -20,15 +23,25 @@ public class ClientMain {
             // convert JSON array to list of locations
             List<Location> locations = List.of(mapper.readValue(Paths.get("src/resources/locations.json").toFile(), Location[].class));
             //Location loc = mapper.readValue(Paths.get("src/resources/locations.json").toFile(),Location.class);
+            int currentLocationIndex = 0;
 
-
+            /*
             // print items
-            items.forEach(System.out::println);
+            // items.forEach(System.out::println);
 
-            System.out.println("\n********************\n");
-            locations.forEach(System.out::println);
-            System.out.println("\n" + locations.get(0).getName());
-            System.out.println("\n" + locations.get(0).getExit().getNorth());
+            // System.out.println("\n********************\n");
+            // locations.forEach(System.out::println);
+            */
+            System.out.println("\n" + locations.get(currentLocationIndex).getName());
+            System.out.println("\n" + locations.get(currentLocationIndex).getExit().getNorth());
+
+            String test = myObj.nextLine();
+            TextParser myTest = new TextParser(test, currentLocationIndex);
+            test = myTest.getInput();
+            currentLocationIndex = myTest.getIndex();
+
+            System.out.printf("the string is: %s and the index is: %s",
+                    test, currentLocationIndex);
 
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -37,6 +50,7 @@ public class ClientMain {
         Scanner scanObject = new Scanner(System.in);
         boolean gameOn = true;
 
+            System.out.println("\n" + locations.get(currentLocationIndex).getName());
 
         while (gameOn) {
 
