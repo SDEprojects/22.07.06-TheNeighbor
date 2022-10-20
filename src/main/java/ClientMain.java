@@ -17,14 +17,17 @@ public class ClientMain {
             List<Items> items = Arrays.asList(mapper.readValue(Paths.get("src/resources/items.json").toFile(), Items[].class));
 
             // convert JSON array to list of locations
-            List<Location> locations = Arrays.asList(mapper.readValue(Paths.get("src/resources/locations.json").toFile(),Location[].class));
+            List<Location> locations = List.of(mapper.readValue(Paths.get("src/resources/locations.json").toFile(),Location[].class));
+            //Location loc = mapper.readValue(Paths.get("src/resources/locations.json").toFile(),Location.class);
+
 
             // print items
             items.forEach(System.out::println);
 
-            System.out.println("********************");
-            //print locations
+            System.out.println("\n********************\n");
             locations.forEach(System.out::println);
+            System.out.println("\n" + locations.get(0).getName());
+            System.out.println("\n" + locations.get(0).getExit().getNorth());
 
 
 
