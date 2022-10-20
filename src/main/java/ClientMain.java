@@ -21,7 +21,7 @@ public class ClientMain {
             List<Items> items = Arrays.asList(mapper.readValue(Paths.get("src/resources/items.json").toFile(), Items[].class));
 
             // convert JSON array to list of locations
-            List<Location> locations = List.of(mapper.readValue(Paths.get("src/resources/locations.json").toFile(),Location[].class));
+            List<Location> locations = List.of(mapper.readValue(Paths.get("src/resources/locations.json").toFile(), Location[].class));
             //Location loc = mapper.readValue(Paths.get("src/resources/locations.json").toFile(),Location.class);
             int currentLocationIndex = 0;
 
@@ -35,7 +35,6 @@ public class ClientMain {
             System.out.println("\n" + locations.get(currentLocationIndex).getName());
             System.out.println("\n" + locations.get(currentLocationIndex).getExit().getNorth());
 
-
             String test = myObj.nextLine();
             TextParser myTest = new TextParser(test, currentLocationIndex);
             test = myTest.getInput();
@@ -44,11 +43,33 @@ public class ClientMain {
             System.out.printf("the string is: %s and the index is: %s",
                     test, currentLocationIndex);
 
-            System.out.println("\n" + locations.get(currentLocationIndex).getName());
-
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+
+        Scanner scanObject = new Scanner(System.in);
+        boolean gameOn = true;
+
+            System.out.println("\n" + locations.get(currentLocationIndex).getName());
+
+        while (gameOn) {
+
+            System.out.println("Welcome to my game" + '\n' + "The game has started");
+            String userCommand = scanObject.nextLine();
+
+            if ( userCommand.equalsIgnoreCase("Quit")) {
+
+                System.out.println("Do you really want to quit the game?");
+                String confirm = scanObject.nextLine();
+                if (confirm.equalsIgnoreCase("Yes")) {
+                    gameOn = false;
+                } else {
+                    continue;
+
+                }
+            }
+
+        }
     }
 
-    }
+}
