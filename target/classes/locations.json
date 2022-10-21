@@ -1,0 +1,224 @@
+[
+    {
+      "name": "basement",
+      "description": "You are in the dimly lit basement beneath the neighbor's home. The aroma of must and mildew fill your senses.",
+      "exit": {
+        "north": "breakfast room",
+        "south": "outside",
+        "east": "-",
+        "west": "utility closet"
+      }
+    },
+    {
+      "name": "breakfast room",
+      "description": "A small, tidy breakfast nook with a small square table and chairs.",
+      "exit": {
+        "north": "outside",
+        "south": "foyer",
+        "east": "family room",
+        "west": "kitchen",
+        "stairs": "basement"
+      }
+    },
+    {
+      "name": "kitchen",
+      "description": "You are in a rather luxurious kitchen with a center island. Cabinets adorne the west and north walls.",
+      "exit": {
+        "north": "-",
+        "south": "",
+        "east": "",
+        "west": ""
+      }
+    },
+    {
+      "name": "guest room",
+      "description": "",
+      "exit": {
+        "north": "oustide",
+        "south": "",
+        "east": "",
+        "west": ""
+      }
+    },
+    {
+      "name": "downstairs bathroom",
+      "description": "",
+      "exit": {
+        "north": "oustide",
+        "south": "",
+        "east": "",
+        "west": ""
+      }
+    },
+    {
+      "name": "laundry room",
+      "description": "",
+      "exit": {
+        "north": "oustide",
+        "south": "",
+        "east": "",
+        "west": ""
+      }
+    },
+    {
+      "name": "garage",
+      "description": "",
+      "exit": {
+        "north": "oustide",
+        "south": "",
+        "east": "",
+        "west": ""
+      }
+    },
+    {
+      "name": "foyer",
+      "description": "",
+      "exit": {
+        "north": "oustide",
+        "south": "",
+        "east": "",
+        "west": "",
+        "stairs": "balcony"
+      }
+    },
+    {
+      "name": "dining room",
+      "description": "",
+      "exit": {
+        "north": "oustide",
+        "south": "",
+        "east": "",
+        "west": ""
+      }
+    },
+    {
+      "name": "family room",
+      "description": "",
+      "exit": {
+        "north": "oustide",
+        "south": "",
+        "east": "",
+        "west": ""
+      }
+    },
+    {
+      "name": "living room",
+      "description": "",
+      "exit": {
+        "north": "oustide",
+        "south": "",
+        "east": "",
+        "west": ""
+      }
+    },
+    {
+      "name": "balcony",
+      "description": "",
+      "exit": {
+        "north": "oustide",
+        "south": "",
+        "east": "",
+        "west": ""
+      }
+    },
+    {
+      "name": "hallway east",
+      "description": "",
+      "exit": {
+        "north": "oustide",
+        "south": "",
+        "east": "",
+        "west": ""
+      }
+    },
+    {
+      "name": "bedroom two",
+      "description": "",
+      "exit": {
+        "north": "oustide",
+        "south": "",
+        "east": "",
+        "west": ""
+      }
+    },
+    {
+      "name": "bedroom three",
+      "description": "",
+      "exit": {
+        "north": "oustide",
+        "south": "",
+        "east": "",
+        "west": ""
+      }
+    },
+    {
+      "name": "hallway west",
+      "description": "",
+      "exit": {
+        "north": "oustide",
+        "south": "",
+        "east": "",
+        "west": ""
+      }
+    },
+    {
+      "name": "bedroom four",
+      "description": "",
+      "exit": {
+        "north": "oustide",
+        "south": "",
+        "east": "",
+        "west": ""
+      }
+    },
+    {
+      "name": "bedroom five",
+      "description": "",
+      "exit": {
+        "north": "oustide",
+        "south": "",
+        "east": "",
+        "west": ""
+      }
+    },
+    {
+      "name": "upstairs bathroom",
+      "description": "",
+      "exit": {
+        "north": "oustide",
+        "south": "",
+        "east": "",
+        "west": ""
+      }
+    },
+    {
+      "name": "master bedroom",
+      "description": "",
+      "exit": {
+        "north": "oustide",
+        "south": "",
+        "east": "",
+        "west": ""
+      }
+    },
+    {
+      "name": "master bathroom",
+      "description": "",
+      "exit": {
+        "north": "oustide",
+        "south": "",
+        "east": "",
+        "west": ""
+      }
+    },
+    {
+      "name": "master closet",
+      "description": "",
+      "exit": {
+        "north": "oustide",
+        "south": "",
+        "east": "",
+        "west": ""
+      }
+    }
+  ]
