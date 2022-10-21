@@ -1,11 +1,12 @@
 public final class TextParser {
     String input;
-    int index;
+    String verb;
+    String noun;
+    boolean isValid;
 
-    // Two argument constructor for
-    public TextParser(String input, int index) {
+    // constructor
+    public TextParser(String input) {
         this.input = input;
-        this.index = index;
     }
 
     // Getters & Setters
@@ -15,20 +16,60 @@ public final class TextParser {
     }
 
     private void setInput(String input) {
-        input = "TEST TEST TEST";
+
         this.input = input;
     }
 
-    public int getIndex() {
-        setIndex(this.index);
-        return index;
+    public String getVerb() {
+        setVerb(this.verb);
+        return verb;
     }
 
-    private void setIndex(int index) {
-        index = 1;
-        this.index = index;
+    private void setVerb(String verb) {
+        String[] v = input.split("\\s+");
+        verb = v[0];
+
+        this.verb = verb;
     }
 
+    public String getNoun() {
+        setNoun(this.noun);
+        return noun;
+    }
 
+    private void setNoun(String noun) {
 
+        String[] n = input.split("\\s+");
+        if (n.length < 2) {
+            noun = "";
+        } else {
+            noun = n[1];
+        }
+
+        this.noun = noun;
+    }
+
+    public Boolean getValid() {
+        setValid(true);
+        return isValid;
+    }
+
+    private void setValid(Boolean valid) {
+        switch (getVerb()) {
+            case "go":
+            case "take":
+            case "look":
+                valid = true;
+                break;
+            default:
+                valid = false;
+        }
+
+        //TODO: validate input against item/locations JSON
+        switch (getNoun()){
+
+        }
+
+        isValid = valid;
+    }
 }
