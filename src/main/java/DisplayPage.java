@@ -14,56 +14,69 @@ public class DisplayPage {
 
     public void execute() {
         gameTitle();
-        menu();
+        pressEnter();
+//        menu();
 //        ContOrQuit();
     }
 
     private void gameTitle() {
+//        try {
+//            Files.lines(Path.of("src/resources/", "asciiGame.txt"))
+//                    .forEach(line -> System.out.println("\u001B[31m" + "\033[1;31m" + line));
+//        } catch (Exception e) {
+//            System.err.println("Error: " + e.getMessage());
+//        }
         try {
-            Files.lines(Path.of("src/resources/", "asciiGame.txt"))
-                    .forEach(line -> System.out.println("\u001B[31m" + "\033[1;31m" + line));
-        } catch (Exception e) {
-            System.err.println("Error: " + e.getMessage());
+            List<String> allLines = Files.readAllLines(Paths.get("src/resources/asciiGame.txt"));
+            for (String line : allLines) {
+                Thread.sleep(500);
+                System.out.println("\u001B[31m" + line + "\u001B[0m");
+            }
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+    private void pressEnter(){
+        System.out.println("Type 'Enter' to continue\n");
+        String input = scanner.nextLine().toLowerCase();
+
+        while (!input.equals("enter")){
+            System.out.println("Invalid command");
+            input = scanner.nextLine();
+        }
+        if(input.equals("enter")){
+            menu();
         }
     }
 
     private void menu() {
-        System.out.println("\033[0;34m" + ".--------------.\n" + "| MENU OPTIONS |\n" + "'--------------'" + "\u001B[0m");
-        System.out.println("[1]INTRO ------- [2]START GAME ------- [3]QUIT");
 
-        boolean validInput = true;
-        int number = 0;
-        while (validInput) {
-            String input = scanner.nextLine().trim();
-            if (input.matches("\\d{1}")) {
-                number = Integer.parseInt(input);
-                if (!(number >= 1 && number <= 3)) {
-                } else {
-                    switch (number) {
-                        case 1:
-                            intro();
-                            break;
-                        case 2:
-                            startGame();
-                            break;
-                        case 3:
-                            System.out.println("I SEE THAT YOU ARE SCARED.\n COMEBACK WHEN YOU STOP BEING WEAK");
-                            System.exit(0);
-                            System.out.flush();
-                            break;
-                    }
+        System.out.println("\033[0;34m" + ".--------------.\n| MENU OPTIONS |\n'--------------'" + "\u001B[0m");
+        System.out.println("Please type your option:\n| INTRO |-------| START GAME |-------| QUIT |\n");
 
-                }
-            } else {
-                System.out.println("invalid selection. Your options is from [1-3]");
+        String input = scanner.nextLine().toLowerCase();
 
-            }
+        while (!input.equals("intro") && input.equals("start game")
+                && input.equals("quit")) {
+            System.out.println("invalid selection.\n");
+            input = scanner.nextLine().toLowerCase();
         }
+        if (input.equals("intro") || input.equals("1")) {
+            intro();
+        } else if (input.equals("start Game")) {
+            startGame();
+        } else if (input.equals("quit")) {
+            System.out.print("\033[H\033[2J");
+            System.out.flush();
+            System.out.println("I SEE THAT YOU ARE SCARED.\n COMEBACK WHEN YOU STOP BEING WEAK");
+            System.exit(0);
+        }
+
     }
-    private void intro(){
+    private void intro() {
 
         try {
-            List<String> allLines =  Files.readAllLines(Paths.get("src/resources/GameStoryIntro.txt"));
+            List<String> allLines = Files.readAllLines(Paths.get("src/resources/GameStoryIntro.txt"));
             for (String line : allLines) {
                 Thread.sleep(2000);
                 System.out.println("\u001B[31m" + line + "\u001B[0m");
@@ -71,11 +84,11 @@ public class DisplayPage {
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
+        subMenu();
+    }
 
-
-
-
-        System.out.print("[1]START GAME ------- [2]QUIT");
+    private void subMenu(){
+        System.out.print("Enter a number option:\n [1]START GAME ------- [2]QUIT\n");
         boolean validInput = true;
         int option = 0;
         while (validInput) {
@@ -98,7 +111,7 @@ public class DisplayPage {
                     }
                 }
             }else {
-                System.out.println("invalid selection. Your options is from [1-2]");
+                System.out.println("invalid selection. Your options is from [1-2]\n");
             }
         }
     }
