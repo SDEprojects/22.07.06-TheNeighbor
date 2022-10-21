@@ -36,15 +36,16 @@ public class DisplayPage {
             e.printStackTrace();
         }
     }
-    private void pressEnter(){
+
+    private void pressEnter() {
         System.out.println("Type 'Enter' to continue\n");
         String input = scanner.nextLine().toLowerCase();
 
-        while (!input.equals("enter")){
+        while (!input.equals("enter")) {
             System.out.println("Invalid command");
             input = scanner.nextLine();
         }
-        if(input.equals("enter")){
+        if (input.equals("enter")) {
             menu();
         }
     }
@@ -63,7 +64,7 @@ public class DisplayPage {
         }
         if (input.equals("intro") || input.equals("1")) {
             intro();
-        } else if (input.equals("start Game")) {
+        } else if (input.equals("start game")) {
             startGame();
         } else if (input.equals("quit")) {
             System.out.print("\033[H\033[2J");
@@ -73,6 +74,7 @@ public class DisplayPage {
         }
 
     }
+
     private void intro() {
 
         try {
@@ -87,7 +89,7 @@ public class DisplayPage {
         subMenu();
     }
 
-    private void subMenu(){
+    private void subMenu() {
         System.out.print("Enter a number option:\n [1]START GAME ------- [2]QUIT\n");
         boolean validInput = true;
         int option = 0;
@@ -110,13 +112,14 @@ public class DisplayPage {
                             break;
                     }
                 }
-            }else {
+            } else {
                 System.out.println("invalid selection. Your options is from [1-2]\n");
             }
         }
     }
-    private void startGame(){
 
+    private void startGame() {
+        // gameController();
         try {
             // create object mapper instance
             ObjectMapper mapper = new ObjectMapper();
@@ -128,39 +131,31 @@ public class DisplayPage {
             List<Location> locations = List.of(mapper.readValue(Paths.get("src/resources/locations.json").toFile(), Location[].class));
             //Location loc = mapper.readValue(Paths.get("src/resources/locations.json").toFile(),Location.class);
             int currentLocationIndex = 0;
+            TextParser myTest = null;
 
-            /*
-            // print items
-            // items.forEach(System.out::println);
+            // user input validation
+            boolean isValid = false;
+            while (!isValid) {
+                System.out.println("Enter an action:\n" +
+                        ">");
+                String test = scanner.next().toLowerCase(); //get user input
+                myTest = new TextParser(test); // pass user input to new TextParser
+                isValid = myTest.getValid(); // set the loop validation to TextParser validation
+                if (!isValid) { // if not valid, will generate invalid message
+                    System.out.println("\nThat is not a valid input. Please try again.\n" +
+                            "Enter 'go', 'look' , or 'take' as a verb");
+                }
+            }
 
-            // System.out.println("\n********************\n");
-            // locations.forEach(System.out::println);
-            */
-
-
-
-            System.out.println("\n" + locations.get(currentLocationIndex).getName());
-            System.out.println("\n" + locations.get(currentLocationIndex).getExit().getNorth());
-
-
-
-
-
-            String test = scanner.nextLine();
-            TextParser myTest = new TextParser(test, currentLocationIndex);
-
-            test = myTest.getInput();
-            currentLocationIndex = myTest.getIndex();
-
-            System.out.printf("the string is: %s and the index is: %s",
-                    test, currentLocationIndex);
-
-            System.out.println("\n" + locations.get(currentLocationIndex).getName());
+            String verb = myTest.getVerb();
+            String noun = myTest.getNoun();
+            System.out.printf("the verb is: %s, and the noun is: %s.\n",
+                    verb, noun);
 
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-
+        subMenu();
 
     }
 }
