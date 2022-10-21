@@ -1,6 +1,13 @@
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
+
 
 public class DisplayPage {
     private Scanner scanner = new Scanner(System.in);
@@ -8,14 +15,12 @@ public class DisplayPage {
     public void execute() {
         gameTitle();
         menu();
-//        intro();
 //        ContOrQuit();
     }
 
     private void gameTitle() {
         try {
-            String banner = Files.readString(Path.of("resource", "asciiGame.txt"));
-            Files.lines(Path.of("resource", "asciiGame.txt"))
+            Files.lines(Path.of("src/resources/", "asciiGame.txt"))
                     .forEach(line -> System.out.println("\u001B[31m" + "\033[1;31m" + line));
         } catch (Exception e) {
             System.err.println("Error: " + e.getMessage());
@@ -42,10 +47,9 @@ public class DisplayPage {
                             startGame();
                             break;
                         case 3:
-                            System.out.print("\033[H\033[2J");
-                            System.out.flush();
                             System.out.println("I SEE THAT YOU ARE SCARED.\n COMEBACK WHEN YOU STOP BEING WEAK");
-                            validInput = false;
+                            System.exit(0);
+                            System.out.flush();
                             break;
                     }
 
@@ -57,13 +61,20 @@ public class DisplayPage {
         }
     }
     private void intro(){
+
         try {
-            String banner = Files.readString(Path.of("resource", "GameStoryIntro.txt"));
-            Files.lines(Path.of("resource", "GameStoryIntro.txt"))
-                    .forEach(line -> System.out.println("\u001B[31m" + line + "\u001B[0m"));
-        } catch (Exception e) {
-            System.err.println("Error: " + e.getMessage());
+            List<String> allLines =  Files.readAllLines(Paths.get("src/resources/GameStoryIntro.txt"));
+            for (String line : allLines) {
+                Thread.sleep(2000);
+                System.out.println("\u001B[31m" + line + "\u001B[0m");
+            }
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
         }
+
+
+
+
         System.out.print("[1]START GAME ------- [2]QUIT");
         boolean validInput = true;
         int option = 0;
@@ -92,6 +103,51 @@ public class DisplayPage {
         }
     }
     private void startGame(){
+
+        try {
+            // create object mapper instance
+            ObjectMapper mapper = new ObjectMapper();
+
+            // convert JSON array to list of items
+            List<Items> items = Arrays.asList(mapper.readValue(Paths.get("src/resources/items.json").toFile(), Items[].class));
+
+            // convert JSON array to list of locations
+            List<Location> locations = List.of(mapper.readValue(Paths.get("src/resources/locations.json").toFile(), Location[].class));
+            //Location loc = mapper.readValue(Paths.get("src/resources/locations.json").toFile(),Location.class);
+            int currentLocationIndex = 0;
+
+            /*
+            // print items
+            // items.forEach(System.out::println);
+
+            // System.out.println("\n********************\n");
+            // locations.forEach(System.out::println);
+            */
+
+
+
+            System.out.println("\n" + locations.get(currentLocationIndex).getName());
+            System.out.println("\n" + locations.get(currentLocationIndex).getExit().getNorth());
+
+
+
+
+
+            String test = scanner.nextLine();
+            TextParser myTest = new TextParser(test, currentLocationIndex);
+
+            test = myTest.getInput();
+            currentLocationIndex = myTest.getIndex();
+
+            System.out.printf("the string is: %s and the index is: %s",
+                    test, currentLocationIndex);
+
+            System.out.println("\n" + locations.get(currentLocationIndex).getName());
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
 
     }
 }
