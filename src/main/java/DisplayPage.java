@@ -2,7 +2,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
@@ -10,26 +9,20 @@ import java.util.Scanner;
 
 
 public class DisplayPage {
-    private Scanner scanner = new Scanner(System.in);
+    private final Scanner scanner = new Scanner(System.in);
 
     public void execute() {
         gameTitle();
         pressEnter();
-//        menu();
-//        ContOrQuit();
+
     }
 
     private void gameTitle() {
-//        try {
-//            Files.lines(Path.of("src/resources/", "asciiGame.txt"))
-//                    .forEach(line -> System.out.println("\u001B[31m" + "\033[1;31m" + line));
-//        } catch (Exception e) {
-//            System.err.println("Error: " + e.getMessage());
-//        }
+
         try {
             List<String> allLines = Files.readAllLines(Paths.get("src/resources/asciiGame.txt"));
             for (String line : allLines) {
-                Thread.sleep(500);
+                Thread.sleep(250);
                 System.out.println("\u001B[31m" + line + "\u001B[0m");
             }
         } catch (IOException | InterruptedException e) {
@@ -45,34 +38,39 @@ public class DisplayPage {
             System.out.println("Invalid command");
             input = scanner.nextLine();
         }
-        if (input.equals("enter")) {
-            menu();
-        }
+        menu();
     }
 
     private void menu() {
 
-        System.out.println("\033[0;34m" + ".--------------.\n| MENU OPTIONS |\n'--------------'" + "\u001B[0m");
+        System.out.println("\u001B[31m" + ".--------------.\n|" + "\u001B[0m" + " MENU OPTIONS " + "\u001B[31m" +
+                            "|\n'--------------'"+ "\u001B[0m");
         System.out.println("Please type your option:\n| INTRO |-------| START GAME |-------| QUIT |\n");
 
-        String input = scanner.nextLine().toLowerCase();
+        String input;
+        while (true) {
 
-        while (!input.equals("intro") && input.equals("start game")
-                && input.equals("quit")) {
-            System.out.println("invalid selection.\n");
             input = scanner.nextLine().toLowerCase();
-        }
-        if (input.equals("intro") || input.equals("1")) {
-            intro();
-        } else if (input.equals("start game")) {
-            startGame();
-        } else if (input.equals("quit")) {
-            System.out.print("\033[H\033[2J");
-            System.out.flush();
-            System.out.println("I SEE THAT YOU ARE SCARED.\n COMEBACK WHEN YOU STOP BEING WEAK");
-            System.exit(0);
-        }
 
+            switch (input) {
+                case "intro":
+                    intro();
+                    break;
+                case "start game":
+                    startGame();
+                    break;
+                case "quit":
+                    System.out.print("\033[H\033[2J");
+                    System.out.flush();
+                    System.out.println("I SEE THAT YOU ARE SCARED.\n COMEBACK WHEN YOU STOP BEING WEAK");
+                    System.exit(0);
+                default:
+                    System.out.println("INVALID SELECTION.\n" +
+                            "Please type your option:\n" +
+                            "| INTRO |-------| START GAME |-------| QUIT |\n");
+                    break;
+            }
+        }
     }
 
     private void intro() {
@@ -90,30 +88,26 @@ public class DisplayPage {
     }
 
     private void subMenu() {
-        System.out.print("Enter a number option:\n [1]START GAME ------- [2]QUIT\n");
-        boolean validInput = true;
-        int option = 0;
-        while (validInput) {
-            String input = scanner.nextLine().trim();
-            if (input.matches("\\d{1}")) {
-                option = Integer.parseInt(input);
-                if (!(option >= 1 && option <= 2)) {
-                } else {
-                    switch (option) {
-                        case 1:
+        System.out.print("Enter a number option:\n| START GAME | ------- | QUIT |\n");
+        String input;
+        while (true) {
+
+            input = scanner.nextLine().toLowerCase();
+
+            switch (input) {
+                        case "start game":
                             startGame();
                             break;
-                        case 2:
+                        case "quit":
                             System.out.print("\033[H\033[2J");
                             System.out.flush();
                             System.out.println("I SEE THAT YOU ARE SCARED.\n COMEBACK WHEN YOU STOP BEING WEAK");
                             System.exit(0);
-                            validInput = false;
-                            break;
-                    }
-                }
-            } else {
-                System.out.println("invalid selection. Your options is from [1-2]\n");
+                default:
+                    System.out.println("INVALID SELECTION.\n" +
+                            "Please type your option:\n" +
+                            "| START GAME |-------| QUIT |\n");
+                    break;
             }
         }
     }
@@ -159,5 +153,3 @@ public class DisplayPage {
 
     }
 }
-
-
