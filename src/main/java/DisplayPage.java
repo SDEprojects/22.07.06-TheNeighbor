@@ -15,7 +15,7 @@ public class DisplayPage {
     public void execute() {
         gameTitle();
         pressEnter();
-
+        menu();
     }
 
     private void gameTitle() {
@@ -40,7 +40,6 @@ public class DisplayPage {
             input = scanner.nextLine();
         }
         clearScreen();
-        menu();
     }
 
     private void menu() {
@@ -88,16 +87,6 @@ public class DisplayPage {
             e.printStackTrace();
         }
         subMenu();
-    }
-    private void quitGame(){
-        try {
-            List<String> allLines = Files.readAllLines(Paths.get("src/resources/quitNeighbor.txt"));
-            for (String line : allLines) {
-                System.out.println("\u001B[31m" + line + "\u001B[0m");
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     private void subMenu() {
@@ -169,7 +158,16 @@ public class DisplayPage {
             ex.printStackTrace();
         }
         subMenu();
-
+    }
+    private void quitGame(){
+        try {
+            List<String> allLines = Files.readAllLines(Paths.get("src/resources/quitNeighbor.txt"));
+            for (String line : allLines) {
+                System.out.println("\u001B[31m" + line + "\u001B[0m");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     private void clearScreen(){
         System.out.print("\033[H\033[2J");
