@@ -3,6 +3,7 @@ public final class TextParser {
     String verb;
     String noun;
     boolean isValid;
+    String[] t = input.split("\\s+"); // split user input for parsing
 
     // constructor
     public TextParser(String input) {
@@ -26,9 +27,7 @@ public final class TextParser {
     }
 
     private void setVerb(String verb) {
-        String[] v = input.split("\\s+");
-        verb = v[0];
-
+        verb = t[0];
         this.verb = verb;
     }
 
@@ -39,11 +38,10 @@ public final class TextParser {
 
     private void setNoun(String noun) {
 
-        String[] n = input.split("\\s+");
-        if (n.length < 2) {
+        if (t.length < 2) {
             noun = "";
         } else {
-            noun = n[1];
+            noun = t[1];
         }
 
         this.noun = noun;
@@ -66,7 +64,7 @@ public final class TextParser {
         }
 
         //TODO: validate input against item/locations JSON
-        switch (getNoun()){
+        switch (getNoun()) {
 
         }
 
