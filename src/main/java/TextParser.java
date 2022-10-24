@@ -63,7 +63,7 @@ public final class TextParser {
                 valid = false;
         }
 
-        //TODO: validate input against item/locations JSON
+        //TODO: validate input against item/locations JSON - maybe use list
         switch (getNoun()) {
 
         }
