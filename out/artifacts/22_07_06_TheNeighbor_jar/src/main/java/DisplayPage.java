@@ -38,7 +38,6 @@ public class DisplayPage {
             System.out.println("Invalid command");
             input = scanner.nextLine();
         }
-        clearScreen();
         menu();
     }
 
@@ -55,16 +54,15 @@ public class DisplayPage {
 
             switch (input) {
                 case "intro":
-                    clearScreen();
                     intro();
                     break;
                 case "start game":
-                    clearScreen();
                     startGame();
                     break;
                 case "quit":
-                    clearScreen();
-                    quitGame();
+                    System.out.print("\033[H\033[2J");
+                    System.out.flush();
+                    System.out.println("I SEE THAT YOU ARE SCARED.\n COMEBACK WHEN YOU STOP BEING WEAK");
                     System.exit(0);
                 default:
                     System.out.println("INVALID SELECTION.\n" +
@@ -88,16 +86,6 @@ public class DisplayPage {
         }
         subMenu();
     }
-    private void quitGame(){
-        try {
-            List<String> allLines = Files.readAllLines(Paths.get("src/resources/quitNeighbor.txt"));
-            for (String line : allLines) {
-                System.out.println("\u001B[31m" + line + "\u001B[0m");
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     private void subMenu() {
         System.out.print("Enter a number option:\n| START GAME | ------- | QUIT |\n");
@@ -108,12 +96,12 @@ public class DisplayPage {
 
             switch (input) {
                         case "start game":
-                            clearScreen();
                             startGame();
                             break;
                         case "quit":
-                            clearScreen();
-                            quitGame();
+                            System.out.print("\033[H\033[2J");
+                            System.out.flush();
+                            System.out.println("I SEE THAT YOU ARE SCARED.\n COMEBACK WHEN YOU STOP BEING WEAK");
                             System.exit(0);
                 default:
                     System.out.println("INVALID SELECTION.\n" +
@@ -163,9 +151,5 @@ public class DisplayPage {
         }
         subMenu();
 
-    }
-    private void clearScreen(){
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
     }
 }
