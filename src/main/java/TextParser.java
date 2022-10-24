@@ -3,11 +3,11 @@ public final class TextParser {
     String verb;
     String noun;
     boolean isValid;
-    String[] t = input.split("\\s+"); // split user input for parsing
+    String[] t;
 
     // constructor
     public TextParser(String input) {
-        this.input = input;
+        t= input.split("\\s+"); // split user input for parsing
     }
 
     // Getters & Setters

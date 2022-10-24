@@ -10,6 +10,7 @@ import java.util.Scanner;
 
 public class DisplayPage {
     private final Scanner scanner = new Scanner(System.in);
+    Player player = new Player();
 
     public void execute() {
         gameTitle();
@@ -155,6 +156,12 @@ public class DisplayPage {
 
             String verb = myTest.getVerb();
             String noun = myTest.getNoun();
+
+
+
+
+
+
             System.out.printf("the verb is: %s, and the noun is: %s.\n",
                     verb, noun);
 
