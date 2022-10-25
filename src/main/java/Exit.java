@@ -1,3 +1,5 @@
+package main.java;
+
 public class Exit {
 
     private String north;
