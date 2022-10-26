@@ -11,6 +11,7 @@ import java.util.*;
 public class GameEngine {
     Scanner scanner = new Scanner(System.in);
     Player player = new Player();
+
     public void execute() {
         gameTitle();
         pressEnter();
@@ -147,13 +148,21 @@ public class GameEngine {
 
                 // user input validation
                 boolean isValid = false;
+                boolean help;
                 while (!isValid) {
                     System.out.print("Enter an action:\n" +
                             ">");
                     String test = scanner.nextLine().toLowerCase(); //get user input
-                        myTest = new TextParser(test); // pass user input to new TextParser
+                    myTest = new TextParser(test); // pass user input to new TextParser
+
+                    help = myTest.getHelp();
+                    if (help) {
+                        helpMenu();
+                    }
+                    else{
                         isValid = myTest.getValid(); // set the loop validation to TextParser validation
                         validateUserInput(isValid);
+                    }
                 }
 
                 // variable to store noun and verb
@@ -199,10 +208,18 @@ public class GameEngine {
                             System.out.println("Where would you like to go?");
                             String userValue = scanner.nextLine().toLowerCase();
                             myTest = new TextParser(userValue);
-                            isValid = myTest.getValid();
-                            validateUserInput(isValid);
-                            noun = myTest.noun;
-                            verb = myTest.verb;
+
+                            help = myTest.getHelp();
+                            if (help) {
+                                helpMenu();
+                            }
+                            else{
+                                isValid = myTest.getValid();
+                                isValid = myTest.getValid();
+                                validateUserInput(isValid);
+                                noun = myTest.noun;
+                                verb = myTest.verb;
+                            }
                             break;
 
                         case "look":
@@ -226,13 +243,22 @@ public class GameEngine {
         subMenu();
     }
 
+    private void helpMenu() {
+        System.out.println("Possible commands: \n");
+        System.out.println("****************************************");
+        System.out.println("--go north   --go south  --go east\n" +
+                "--go west   --go stairs \n \n OR");
+        System.out.println("continue--to play the game");
+        System.out.println("exit---to exit the game");
+        System.out.println("******************************************");
+    }
+
     private void validateUserInput(boolean isValid) {
         if (!isValid) { // if not valid, will generate invalid message
             System.out.println("\nThat is not a valid input. Please try again.\n" +
                     "Enter 'go', 'look' , or 'take' as a verb");
         }
     }
-
 
 
     private void clearScreen() {
