@@ -14,7 +14,8 @@ public class GameEngine {
 
     public void execute() {
         gameTitle();
-        pressEnter();
+        PressEnterToContinue();
+        //pressEnter();
         menu();
     }
 
@@ -30,17 +31,21 @@ public class GameEngine {
             e.printStackTrace();
         }
     }
-
-    private void pressEnter() {
-        System.out.println("Type 'Enter' to continue\n");
-        String input = scanner.nextLine().toLowerCase();
-
-        while (!input.equals("enter")) {
-            System.out.println("Invalid command");
-            input = scanner.nextLine();
-        }
+    private void PressEnterToContinue(){
+        System.out.println("press 'Enter' to continue\n");
+        scanner.nextLine();
         clearScreen();
     }
+//    private void pressEnter() {
+//        System.out.println("Type 'Enter' to continue\n");
+//        String input = scanner.nextLine().toLowerCase();
+//
+//        while (!input.equals("enter")) {
+//            System.out.println("Invalid command");
+//            input = scanner.nextLine();
+//        }
+//        clearScreen();
+//    }
 
     private void menu() {
 
@@ -82,23 +87,13 @@ public class GameEngine {
             for (String line : allLines) {
                 Thread.sleep(2000);
                 System.out.println("\u001B[31m" + line + "\u001B[0m");
-            }
+                }
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
         subMenu();
     }
 
-    private void quitGame() {
-        try {
-            List<String> allLines = Files.readAllLines(Paths.get("src/resources/quitNeighbor.txt"));
-            for (String line : allLines) {
-                System.out.println("\u001B[31m" + line + "\u001B[0m");
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     private void subMenu() {
         System.out.print("Enter a number option:\n| START GAME | ------- | QUIT |\n");
@@ -234,7 +229,6 @@ public class GameEngine {
                     }
                 }
 
-
             }
 
         } catch (Exception ex) {
@@ -259,7 +253,16 @@ public class GameEngine {
                     "Enter 'go', 'look' , or 'take' as a verb");
         }
     }
-
+    private void quitGame() {
+        try {
+            List<String> allLines = Files.readAllLines(Paths.get("src/resources/quitNeighbor.txt"));
+            for (String line : allLines) {
+                System.out.println("\u001B[31m" + line + "\u001B[0m");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     private void clearScreen() {
         System.out.print("\033[H\033[2J");
