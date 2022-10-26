@@ -5,15 +5,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.sql.Array;
-import java.sql.SQLOutput;
 import java.util.*;
 
 
-public class DisplayPage {
+public class GameEngine {
     Scanner scanner = new Scanner(System.in);
     Player player = new Player();
-
     public void execute() {
         gameTitle();
         pressEnter();
@@ -141,65 +138,71 @@ public class DisplayPage {
             //Location loc = mapper.readValue(Paths.get("src/resources/locations.json").toFile(),Location.class);
             TextParser myTest = null;
             boolean gameOn = true;
-
             while (gameOn) {
+
+                // player starts from the basement
+                System.out.println("You are starting from a basement\n\n");
+                System.out.println("Your possible exit routes are: \n");
+                System.out.println(locations.get(0).getExit().toString());
 
                 // user input validation
                 boolean isValid = false;
                 while (!isValid) {
-                    System.out.println("Enter an action:\n" +
+                    System.out.print("Enter an action:\n" +
                             ">");
-                    String test = scanner.next().toLowerCase(); //get user input
-                    myTest = new TextParser(test); // pass user input to new TextParser
-                    isValid = myTest.getValid(); // set the loop validation to TextParser validation
-                    if (!isValid) { // if not valid, will generate invalid message
-                        System.out.println("\nThat is not a valid input. Please try again.\n" +
-                                "Enter 'go', 'look' , or 'take' as a verb");
-                    }
+                    String test = scanner.nextLine().toLowerCase(); //get user input
+                        myTest = new TextParser(test); // pass user input to new TextParser
+                        isValid = myTest.getValid(); // set the loop validation to TextParser validation
+                        validateUserInput(isValid);
                 }
 
-                String noun = "north";
+                // variable to store noun and verb
+                String noun = myTest.getNoun();
                 String verb = myTest.getVerb();
 
-                int currentLocationIndex = 0;
-
-                while (isValid) {
+                boolean gameMovement = true;
+                while (gameMovement) {
                     switch (verb) {
                         case "go":
-                            String userMap = "";
                             switch (noun) {
                                 case "north":
-                                    userMap = locations.get(currentLocationIndex).getExit().getNorth();
+                                    GameGlobalVariable.currentLocation = locations.get(GameGlobalVariable.currentLocationIndex).getExit().getNorth();
                                     break;
                                 case "south":
-                                    userMap = locations.get(currentLocationIndex).getExit().getSouth();
+                                    GameGlobalVariable.currentLocation = locations.get(GameGlobalVariable.currentLocationIndex).getExit().getSouth();
                                     break;
                                 case "east":
-                                    userMap = locations.get(currentLocationIndex).getExit().getEast();
+                                    GameGlobalVariable.currentLocation = locations.get(GameGlobalVariable.currentLocationIndex).getExit().getEast();
                                     break;
                                 case "west":
-                                    userMap = locations.get(currentLocationIndex).getExit().getWest();
+                                    GameGlobalVariable.currentLocation = locations.get(GameGlobalVariable.currentLocationIndex).getExit().getWest();
                                     break;
                                 case "stairs":
-                                    userMap = locations.get(currentLocationIndex).getExit().getStairs();
+                                    GameGlobalVariable.currentLocation = locations.get(GameGlobalVariable.currentLocationIndex).getExit().getStairs();
                                     break;
                             }
 
-                            System.out.println();
-                            System.out.println("You are in a " + locations.get(currentLocationIndex).getName());
-                            System.out.println(locations.get(currentLocationIndex).getDescription());
-                            Thread.sleep(2000);
-                            System.out.println("Your possible exit routes are");
-                            System.out.println(locations.get(currentLocationIndex).getExit().toString());
-                            Thread.sleep(2000);
-                            System.out.println();
                             for (int i = 0; i < locations.size(); i++) {
-                                if (locations.get(i).getName().equals(userMap)) {
-                                    currentLocationIndex = i;
+                                if (locations.get(i).getName().equals(GameGlobalVariable.currentLocation)) {
+                                    GameGlobalVariable.currentLocationIndex = i;
                                 }
                             }
+                            System.out.println();
+                            System.out.println("You are in a " + locations.get(GameGlobalVariable.currentLocationIndex).getName());
+                            System.out.println(locations.get(GameGlobalVariable.currentLocationIndex).getDescription());
+                            Thread.sleep(2000);
+                            System.out.println("Your possible exit routes are");
+                            System.out.println(locations.get(GameGlobalVariable.currentLocationIndex).getExit().toString());
+                            Thread.sleep(2000);
+                            System.out.println();
+
                             System.out.println("Where would you like to go?");
-                            noun = scanner.nextLine().toLowerCase();
+                            String userValue = scanner.nextLine().toLowerCase();
+                            myTest = new TextParser(userValue);
+                            isValid = myTest.getValid();
+                            validateUserInput(isValid);
+                            noun = myTest.noun;
+                            verb = myTest.verb;
                             break;
 
                         case "look":
@@ -213,14 +216,24 @@ public class DisplayPage {
                             break;
                     }
                 }
-            }
 
+
+            }
 
         } catch (Exception ex) {
             ex.printStackTrace();
         }
         subMenu();
     }
+
+    private void validateUserInput(boolean isValid) {
+        if (!isValid) { // if not valid, will generate invalid message
+            System.out.println("\nThat is not a valid input. Please try again.\n" +
+                    "Enter 'go', 'look' , or 'take' as a verb");
+        }
+    }
+
+
 
     private void clearScreen() {
         System.out.print("\033[H\033[2J");

@@ -36,7 +36,6 @@ public final class TextParser {
                 case "look":
                     this.verb = "look";
                     break;
-                default:
             }
         }
         if (this.verb == null) {
@@ -67,7 +66,6 @@ public final class TextParser {
                 case "stairs":
                     this.noun = "stairs";
                     break;
-                default:
             }
         }
         if (this.noun == null) {
@@ -85,6 +83,7 @@ public final class TextParser {
                     break;
                 default:
                     this.help = false;
+
             }
         }
         return this.help;
@@ -95,20 +94,22 @@ public final class TextParser {
     }
 
     private Boolean setValid() {
+
         switch (getVerb()) {
             case "invalid":
                 this.isValid = false;
                 break;
             default:
                 this.isValid = true;
+
         }
 
         switch (getNoun()) {
             case "invalid":
-                isValid = false;
+                this.isValid = false;
                 break;
             default:
-                isValid = true;
+               this.isValid = true;
         }
 
         return this.isValid;
