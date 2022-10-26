@@ -1,3 +1,5 @@
+package main.java;
+
 import java.util.List;
 
 public class Location {
@@ -5,19 +7,31 @@ public class Location {
     private String name;
     private String description;
     private Exit exit;
+    private Items items;
 
     //Constructors
 
     public Location() {
     }
 
-    public Location(String name, String description, Exit exit) {
+    public Location(String name, String description, Exit exit, Items items) {
         this.name = name;
         this.description = description;
         this.exit = exit;
+        this.items = items;
+
     }
 
     //Getters ans setters
+
+
+    public Items getItems() {
+        return items;
+    }
+
+    public void setItems(Items items) {
+        this.items = items;
+    }
 
     public String getName() {
         return name;

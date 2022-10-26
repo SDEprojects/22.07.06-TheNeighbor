@@ -70,11 +70,11 @@
       "north": "guest room",
       "south": "garage",
       "east": "kitchen",
-      "west": "downstairs bathroom",
-      "items": {
-        "name": "wadded note",
-        "description": "A wadded piece of paper with the numbers 86753 faintly written on it."
-      }
+      "west": "downstairs bathroom"
+    },
+    "items": {
+      "name": "wadded note",
+      "description": "A wadded piece of paper with the numbers 86753 faintly written on it."
     }
   },
   {
