@@ -1,224 +1,266 @@
 [
-    {
-      "name": "basement",
-      "description": "You are in the dimly lit basement beneath the neighbor's home. The aroma of must and mildew fill your senses.",
-      "exit": {
-        "north": "breakfast room",
-        "south": "outside",
-        "east": "-",
-        "west": "utility closet"
-      }
+  {
+    "name": "basement",
+    "description": "A dimly lit room beneath the neighbor's home. The aroma of must and mildew fill the senses.",
+    "exit": {
+      "north": "strange door",
+      "south": "outside",
+      "east": "",
+      "west": "storage closet",
+      "stairs": "breakfast room"
     },
-    {
-      "name": "breakfast room",
-      "description": "A small, tidy breakfast nook with a small square table and chairs.",
-      "exit": {
-        "north": "outside",
-        "south": "foyer",
-        "east": "family room",
-        "west": "kitchen",
-        "stairs": "basement"
-      }
-    },
-    {
-      "name": "kitchen",
-      "description": "You are in a rather luxurious kitchen with a center island. Cabinets adorne the west and north walls.",
-      "exit": {
-        "north": "-",
-        "south": "",
-        "east": "",
-        "west": ""
-      }
-    },
-    {
-      "name": "guest room",
-      "description": "",
-      "exit": {
-        "north": "oustide",
-        "south": "",
-        "east": "",
-        "west": ""
-      }
-    },
-    {
-      "name": "downstairs bathroom",
-      "description": "",
-      "exit": {
-        "north": "oustide",
-        "south": "",
-        "east": "",
-        "west": ""
-      }
-    },
-    {
-      "name": "laundry room",
-      "description": "",
-      "exit": {
-        "north": "oustide",
-        "south": "",
-        "east": "",
-        "west": ""
-      }
-    },
-    {
-      "name": "garage",
-      "description": "",
-      "exit": {
-        "north": "oustide",
-        "south": "",
-        "east": "",
-        "west": ""
-      }
-    },
-    {
-      "name": "foyer",
-      "description": "",
-      "exit": {
-        "north": "oustide",
-        "south": "",
-        "east": "",
-        "west": "",
-        "stairs": "balcony"
-      }
-    },
-    {
-      "name": "dining room",
-      "description": "",
-      "exit": {
-        "north": "oustide",
-        "south": "",
-        "east": "",
-        "west": ""
-      }
-    },
-    {
-      "name": "family room",
-      "description": "",
-      "exit": {
-        "north": "oustide",
-        "south": "",
-        "east": "",
-        "west": ""
-      }
-    },
-    {
-      "name": "living room",
-      "description": "",
-      "exit": {
-        "north": "oustide",
-        "south": "",
-        "east": "",
-        "west": ""
-      }
-    },
-    {
-      "name": "balcony",
-      "description": "",
-      "exit": {
-        "north": "oustide",
-        "south": "",
-        "east": "",
-        "west": ""
-      }
-    },
-    {
-      "name": "hallway east",
-      "description": "",
-      "exit": {
-        "north": "oustide",
-        "south": "",
-        "east": "",
-        "west": ""
-      }
-    },
-    {
-      "name": "bedroom two",
-      "description": "",
-      "exit": {
-        "north": "oustide",
-        "south": "",
-        "east": "",
-        "west": ""
-      }
-    },
-    {
-      "name": "bedroom three",
-      "description": "",
-      "exit": {
-        "north": "oustide",
-        "south": "",
-        "east": "",
-        "west": ""
-      }
-    },
-    {
-      "name": "hallway west",
-      "description": "",
-      "exit": {
-        "north": "oustide",
-        "south": "",
-        "east": "",
-        "west": ""
-      }
-    },
-    {
-      "name": "bedroom four",
-      "description": "",
-      "exit": {
-        "north": "oustide",
-        "south": "",
-        "east": "",
-        "west": ""
-      }
-    },
-    {
-      "name": "bedroom five",
-      "description": "",
-      "exit": {
-        "north": "oustide",
-        "south": "",
-        "east": "",
-        "west": ""
-      }
-    },
-    {
-      "name": "upstairs bathroom",
-      "description": "",
-      "exit": {
-        "north": "oustide",
-        "south": "",
-        "east": "",
-        "west": ""
-      }
-    },
-    {
-      "name": "master bedroom",
-      "description": "",
-      "exit": {
-        "north": "oustide",
-        "south": "",
-        "east": "",
-        "west": ""
-      }
-    },
-    {
-      "name": "master bathroom",
-      "description": "",
-      "exit": {
-        "north": "oustide",
-        "south": "",
-        "east": "",
-        "west": ""
-      }
-    },
-    {
-      "name": "master closet",
-      "description": "",
-      "exit": {
-        "north": "oustide",
-        "south": "",
-        "east": "",
-        "west": ""
-      }
+    "items": {
+      "name": "rusty crow bar",
+      "description": "A metal bar with a single curved end and flattened points, often with a small fissure on one or both ends for removing nails or to force apart two objects."
     }
-  ]
+  },
+  {
+    "name": "breakfast room",
+    "description": "A small, tidy breakfast nook with a small square table and chairs.",
+    "exit": {
+      "north": "outside",
+      "south": "foyer",
+      "east": "family room",
+      "west": "kitchen",
+      "stairs": "basement"
+    },
+    "items": {
+      "name": "lighter",
+      "description": "A small butane lighter."
+    }
+  },
+  {
+    "name": "kitchen",
+    "description": "A rather luxurious kitchen with a center island. Cabinets adorne the west and north walls.",
+    "exit": {
+      "north": "",
+      "south": "dining room",
+      "east": "family room",
+      "west": "laundry room"
+    }
+  },
+  {
+    "name": "guest room",
+    "description": "A small guest room adorned with traditional furniture and decor.",
+    "exit": {
+      "north": "outside",
+      "south": "laundry room",
+      "east": "",
+      "west": ""
+    }
+  },
+  {
+    "name": "downstairs bathroom",
+    "description": "A generic bathroom with a full size bathtub.",
+    "exit": {
+      "north": "",
+      "south": "",
+      "east": "laundry room",
+      "west": "outside"
+    },
+    "items": {
+      "name": "handheld mirror",
+      "description": "A small mirror used for powdering noses...might be useful for looking in other rooms from around a corner..."
+    }
+  },
+  {
+    "name": "laundry room",
+    "description": "A decent sized room with run of the mill laundry supplies.",
+    "exit": {
+      "north": "guest room",
+      "south": "garage",
+      "east": "kitchen",
+      "west": "downstairs bathroom"
+    },
+    "items": {
+      "name": "wadded note",
+      "description": "A wadded piece of paper with the numbers 86753 faintly written on it."
+    }
+  },
+  {
+    "name": "garage",
+    "description": "A spacious two-car garage suspiciously devoid of storage or vehicles.",
+    "exit": {
+      "north": "laundry room",
+      "south": "outside",
+      "east": "",
+      "west": ""
+    },
+    "items": {
+      "name": "batteries",
+      "description": "A small two-pack of size D batteries."
+    }
+  },
+  {
+    "name": "foyer",
+    "description": "A decently sized entry room at the front of the house with sight-line to the balcony above...",
+    "exit": {
+      "north": "breakfast room",
+      "south": "outside",
+      "east": "living room",
+      "west": "dining room",
+      "stairs": "balcony"
+    }
+  },
+  {
+    "name": "dining room",
+    "description": "A fairly large formal dining area - there is a large 8-person table in the center",
+    "exit": {
+      "north": "kitchen",
+      "south": "outside",
+      "east": "foyer",
+      "west": ""
+    },
+    "items": {
+      "name": "candle",
+      "description": "A table top candle placed inside of a candle holder."
+    }
+  },
+  {
+    "name": "family room",
+    "description": "A decently sized room with two adjacent couches and a pair of large armchairs facing a fireplace. Above the fireplace hangs a ",
+    "exit": {
+      "north": "outside",
+      "south": "living room",
+      "east": "",
+      "west": "breakfast room"
+    },
+    "items": {
+      "name": "portrait",
+      "description": "A regal looking portrait of an elder man...there seems to be a smudged sequence of numbers you can't quite make out without more light...."
+    }
+  },
+  {
+    "name": "living room",
+    "description": "A cozy room with a large comfortable looking sectional facing a large television.",
+    "exit": {
+      "north": "family room",
+      "south": "outside",
+      "east": "",
+      "west": "foyer"
+    }
+  },
+  {
+    "name": "balcony",
+    "description": "A small balcony landing overlooking the foyer area below.",
+    "exit": {
+      "north": "",
+      "south": "",
+      "east": "master bedroom",
+      "west": "hallway east",
+      "stairs": "foyer"
+    }
+  },
+  {
+    "name": "hallway east",
+    "description": "A stretch of hallway with access to two of the upstairs bedrooms.",
+    "exit": {
+      "north": "bedroom three",
+      "south": "bedroom two",
+      "east": "balcony",
+      "west": "hallway west"
+    }
+  },
+  {
+    "name": "bedroom two",
+    "description": "A large, rectangular bedroom with a small twin-size bed in the corner.",
+    "exit": {
+      "north": "hallway east",
+      "south": "outside",
+      "east": "",
+      "west": ""
+    }
+  },
+  {
+    "name": "bedroom three",
+    "description": "A medium, square room with a small crafting desk in the center of the room",
+    "exit": {
+      "north": "outside",
+      "south": "",
+      "east": "",
+      "west": ""
+    },
+    "items": {
+      "name": "scissors",
+      "description": "A small pair of fabric shears that, if used on anything other than cloth, will invoke the ire of seamstresses everywhere."
+    }
+  },
+  {
+    "name": "hallway west",
+    "description": "A stretch of hallway with access to the rest of the upstairs bedrooms.",
+    "exit": {
+      "north": "bedroom four",
+      "south": "bedroom five",
+      "east": "hallway east",
+      "west": "upstairs bathroom"
+    }
+  },
+  {
+    "name": "bedroom four",
+    "description": "Another medium size, square room with shelves adorning each of the walls",
+    "exit": {
+      "north": "oustide",
+      "south": "hallway west",
+      "east": "",
+      "west": ""
+    }
+  },
+  {
+    "name": "bedroom five",
+    "description": "A final large-ish room with a large TV on a stand cluttered with several gaming systems, and a large leather recliner facing the tv. There is an outdoor balcony to the west.",
+    "exit": {
+      "north": "hallway west",
+      "south": "",
+      "east": "",
+      "west": "outside"
+    }
+  },
+  {
+    "name": "upstairs bathroom",
+    "description": "Another full bathroom with a claw foot tub and generic accoutrements.",
+    "exit": {
+      "north": "",
+      "south": "",
+      "east": "hallway west",
+      "west": ""
+    },
+    "items": {
+      "name": "bedside notepad",
+      "description": "A small notepad on the bedside table with the number 86753 scrawled on the bottom corner."
+    }
+  },
+  {
+    "name": "master bedroom",
+    "description": "A very spacious room with vaulted ceilings and an extravagent king-size bed in the center.",
+    "exit": {
+      "north": "master closet",
+      "south": "",
+      "east": "master bathroom",
+      "west": "balcony"
+    },
+    "items": {
+      "name": "bedside notepad",
+      "description": "A small notepad on the bedside table with the number 86753 scrawled on the bottom corner."
+    }
+  },
+  {
+    "name": "master bathroom",
+    "description": "A large, extravagent bathroom with standing shower, jacuzzi tub and dual vanity. Clearly the neighbor's primary bathroom.",
+    "exit": {
+      "north": "outside",
+      "south": "",
+      "east": "",
+      "west": "master bedroom"
+    }
+  },
+  {
+    "name": "master closet",
+    "description": "A spacious, windowless, walk-in closet with an assortment of garments hanging and small boxes stashed above on the shelf.",
+    "exit": {
+      "north": "",
+      "south": "master bedroom",
+      "east": "",
+      "west": ""
+    }
+  }
+]

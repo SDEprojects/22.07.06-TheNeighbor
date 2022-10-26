@@ -1,50 +1,6 @@
 [
   {
     "name": "flashlight",
-    "image": "no image! coming soon!",
-    "description": "Hand-held portable battery operated light source. It is powered by two D size batteries",
-    "location": "basement"
-  },
-  {
-    "name": "crowbar",
-    "image": "no image! coming soon!",
-    "description": "A metal bar with a single curved end and flattened points, often with a small fissure on one or both ends for removing nails or to force apart two objects.",
-    "location": "basement"
-  },
-  {
-    "name": "hammer",
-    "image": "no image! coming soon!",
-    "description": "A hand tool, consisting of a weighted head fixed to a long handle that is swung to deliver an impact to a small area of an object.",
-    "location": "basement"
-  },
-  {
-    "name": "battery",
-    "image": "no image! coming soon!",
-    "description": "A dry cell that is cylindrical in shape with electrical contacts at both ends. D cells were originally known as flashlight batteries.",
-    "location": "basement"
-  },
-  {
-    "name": "cellphone",
-    "image": " no image! coming soon!!",
-    "description": "A portable telephone that can make and receive calls over a radio frequency link while the user is moving within a telephone service area",
-    "location": "player"
-  },
-  {
-    "name": "map",
-    "image": " no image! coming soon!!",
-    "description": "placeholder",
-    "location": "placeholder"
-  },
-  {
-    "name": "house key",
-    "image": " no image! coming soon!!",
-    "description": "placeholder",
-    "location": "placeholder"
-  },
-  {
-    "name": "compass",
-    "image": " no image! coming soon!!",
-    "description": "placeholder",
-    "location": "placeholder"
+    "description": "Hand-held portable battery operated light source. It is powered by two D size batteries"
   }
 ]
