@@ -187,6 +187,7 @@ public class GameEngine {
                                 noun = myTest.noun;
                                 verb = myTest.verb;
                             }
+
                             break;
 
                         case "look":
