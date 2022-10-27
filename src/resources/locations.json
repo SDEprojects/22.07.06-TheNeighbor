@@ -3,7 +3,7 @@
     "name": "basement",
     "description": "A dimly lit room beneath the neighbor's home. The aroma of must and mildew fill the senses.",
     "exit": {
-      "north": "",
+      "north": "breakfast room",
       "south": "outside",
       "east": "",
       "west": "",
