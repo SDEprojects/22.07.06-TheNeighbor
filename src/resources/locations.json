@@ -200,7 +200,7 @@
     "name": "bedroom four",
     "description": "Another medium size, square room with shelves adorning each of the walls",
     "exit": {
-      "north": "oustide",
+      "north": "outside",
       "south": "hallway west",
       "east": "",
       "west": ""
@@ -218,7 +218,7 @@
   },
   {
     "name": "upstairs bathroom",
-    "description": "Another full bathroom with a claw foot tub and generic accoutrements.",
+    "description": "Another full bathroom with a claw foot tub and generic accoutrement.",
     "exit": {
       "north": "",
       "south": "",
@@ -232,7 +232,7 @@
   },
   {
     "name": "master bedroom",
-    "description": "A very spacious room with vaulted ceilings and an extravagent king-size bed in the center.",
+    "description": "A very spacious room with vaulted ceilings and an extravagant king-size bed in the center.",
     "exit": {
       "north": "master closet",
       "south": "",
@@ -246,7 +246,7 @@
   },
   {
     "name": "master bathroom",
-    "description": "A large, extravagent bathroom with standing shower, jacuzzi tub and dual vanity. Clearly the neighbor's primary bathroom.",
+    "description": "A large, extravagant bathroom with standing shower, jacuzzi tub and dual vanity. Clearly the neighbor's primary bathroom.",
     "exit": {
       "north": "outside",
       "south": "",
