@@ -35,6 +35,7 @@ public class GameEngine {
                     Thread.sleep(250);
                     System.out.println("\u001B[31m" + line + "\u001B[0m");
                 } else {
+                    scanner.nextLine();
                     break;
                 }
             }
@@ -66,9 +67,8 @@ public class GameEngine {
                 quitGame();
                 break;
             default:
-                System.out.println("INVALID SELECTION.\n" +
-                        "Please type your option:\n" +
-                        "| INTRO |-------| START GAME |-------| QUIT |\n");
+                clearScreen();
+                System.out.println("INVALID INPUT.\n");
                 break;
         }
     }
@@ -85,6 +85,7 @@ public class GameEngine {
                     Thread.sleep(2000);
                     System.out.println("\u001B[31m" + line + "\u001B[0m");
                 } else {
+                    scanner.nextLine();
                     break;
                 }
             }
