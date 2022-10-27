@@ -1,12 +1,13 @@
+package main.java;
+
 public final class TextParser {
-    String input;
-    String verb;
-    String noun;
-    boolean isValid;
+    String input, verb, noun;
+    boolean isValid, help;
+    String[] t;
 
     // constructor
     public TextParser(String input) {
-        this.input = input;
+        t = input.split("\\s"); // split user input for parsing
     }
 
     // Getters & Setters
@@ -16,60 +17,101 @@ public final class TextParser {
     }
 
     private void setInput(String input) {
-
         this.input = input;
     }
 
     public String getVerb() {
-        setVerb(this.verb);
-        return verb;
+        return setVerb();
     }
 
-    private void setVerb(String verb) {
-        String[] v = input.split("\\s+");
-        verb = v[0];
-
-        this.verb = verb;
+    private String setVerb() {
+        for (int i = 0; i < t.length; i++) {
+            switch (t[i]) {
+                case "go":
+                    this.verb = "go";
+                    break;
+                case "take":
+                    this.verb = "take";
+                    break;
+                case "look":
+                    this.verb = "look";
+                    break;
+            }
+        }
+        if (this.verb == null) {
+            this.verb = "invalid";
+        }
+        return this.verb;
     }
 
     public String getNoun() {
-        setNoun(this.noun);
-        return noun;
+        return setNoun();
     }
 
-    private void setNoun(String noun) {
-
-        String[] n = input.split("\\s+");
-        if (n.length < 2) {
-            noun = "";
-        } else {
-            noun = n[1];
+    private String setNoun() {
+        for (int i = 0; i < t.length; i++) {
+            switch (t[i]) {
+                case "north":
+                    this.noun = "north";
+                    break;
+                case "south":
+                    this.noun = "south";
+                    break;
+                case "east":
+                    this.noun = "east";
+                    break;
+                case "west":
+                    this.noun = "west";
+                    break;
+                case "stairs":
+                    this.noun = "stairs";
+                    break;
+            }
+        }
+        if (this.noun == null) {
+            this.noun = "invalid";
         }
 
-        this.noun = noun;
+        return this.noun;
+    }
+
+    public Boolean getHelp() {
+        for (int i = 0; i < t.length; i++) {
+            switch (t[i]) {
+                case "help":
+                    this.help = true;
+                    break;
+                default:
+                    this.help = false;
+
+            }
+        }
+        return this.help;
     }
 
     public Boolean getValid() {
-        setValid(true);
-        return isValid;
+        return setValid();
     }
 
-    private void setValid(Boolean valid) {
+    private Boolean setValid() {
+
         switch (getVerb()) {
-            case "go":
-            case "take":
-            case "look":
-                valid = true;
+            case "invalid":
+                this.isValid = false;
                 break;
             default:
-                valid = false;
-        }
-
-        //TODO: validate input against item/locations JSON
-        switch (getNoun()){
+                this.isValid = true;
 
         }
 
-        isValid = valid;
+        switch (getNoun()) {
+            case "invalid":
+                this.isValid = false;
+                break;
+            default:
+               this.isValid = true;
+        }
+
+        return this.isValid;
     }
 }

@@ -2,26 +2,22 @@ package main.java;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-
-import java.io.DataInputStream;
+import java.awt.event.KeyAdapter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
 
 
-
-public class GameEngine {
-    boolean quit = false;
+public class GameEngine extends KeyAdapter {
     Scanner scanner = new Scanner(System.in);
     Player player = new Player();
 
     public void execute() {
-
         gameTitle();
-        while (!quit) {
-            menu();
-        }
+        PressEnterToContinue();
+        //pressEnter();
+        menu();
     }
 
     private void gameTitle() {
@@ -30,18 +26,28 @@ public class GameEngine {
             List<String> allLines = Files.readAllLines(Paths.get("src/resources/asciiGame.txt"));
 
             for (String line : allLines) {
-                DataInputStream dis = new DataInputStream(System.in);
-                if (dis.available() == 0) {
-                    Thread.sleep(250);
-                    System.out.println("\u001B[31m" + line + "\u001B[0m");
-                } else {
-                    break;
-                }
+                Thread.sleep(250);
+                System.out.println("\u001B[31m" + line + "\u001B[0m");
             }
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
     }
+    private void PressEnterToContinue(){
+        System.out.println("press 'Enter' to continue\n");
+        scanner.nextLine();
+        clearScreen();
+    }
+//    private void pressEnter() {
+//        System.out.println("Type 'Enter' to continue\n");
+//        String input = scanner.nextLine().toLowerCase();
+//
+//        while (!input.equals("enter")) {
+//            System.out.println("Invalid command");
+//            input = scanner.nextLine();
+//        }
+//        clearScreen();
+//    }
 
     private void menu() {
 
@@ -50,50 +56,71 @@ public class GameEngine {
         System.out.println("Please type your option:\n| INTRO |-------| START GAME |-------| QUIT |\n");
 
         String input;
-        input = scanner.nextLine().toLowerCase();
+        while (true) {
 
-        switch (input) {
-            case "intro":
-                clearScreen();
-                intro();
-                break;
-            case "start game":
-                clearScreen();
-                startGame();
-                break;
-            case "quit":
-                clearScreen();
-                quitGame();
-                break;
-            default:
-                System.out.println("INVALID SELECTION.\n" +
-                        "Please type your option:\n" +
-                        "| INTRO |-------| START GAME |-------| QUIT |\n");
-                break;
+            input = scanner.nextLine().toLowerCase();
+
+            switch (input) {
+                case "intro":
+                    clearScreen();
+                    intro();
+                    break;
+                case "start game":
+                    clearScreen();
+                    startGame();
+                    break;
+                case "quit":
+                    clearScreen();
+                    quitGame();
+                    System.exit(0);
+                default:
+                    System.out.println("INVALID SELECTION.\n" +
+                            "Please type your option:\n" +
+                            "| INTRO |-------| START GAME |-------| QUIT |\n");
+                    break;
+            }
         }
     }
-
 
     private void intro() {
 
         try {
             List<String> allLines = Files.readAllLines(Paths.get("src/resources/GameStoryIntro.txt"));
-
             for (String line : allLines) {
-                DataInputStream dis = new DataInputStream(System.in);
-                if (dis.available() == 0) {
-                    Thread.sleep(2000);
-                    System.out.println("\u001B[31m" + line + "\u001B[0m");
-                } else {
-                    break;
+                Thread.sleep(2000);
+                System.out.println("\u001B[31m" + line + "\u001B[0m");
                 }
-            }
-
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
+        subMenu();
     }
 
+
+    private void subMenu() {
+        System.out.print("Enter a number option:\n| START GAME | ------- | QUIT |\n");
+        String input;
+        while (true) {
+
+            input = scanner.nextLine().toLowerCase();
+
+            switch (input) {
+                case "start game":
+                    clearScreen();
+                    startGame();
+                    break;
+                case "quit":
+                    clearScreen();
+                    quitGame();
+                    System.exit(0);
+                default:
+                    System.out.println("INVALID SELECTION.\n" +
+                            "Please type your option:\n" +
+                            "| START GAME |-------| QUIT |\n");
+                    break;
+            }
+        }
+    }
 
     private void startGame() {
         // gameController();
@@ -128,7 +155,8 @@ public class GameEngine {
                     help = myTest.getHelp();
                     if (help) {
                         helpMenu();
-                    } else {
+                    }
+                    else{
                         isValid = myTest.getValid(); // set the loop validation to TextParser validation
                         validateUserInput(isValid);
                     }
@@ -181,7 +209,8 @@ public class GameEngine {
                             help = myTest.getHelp();
                             if (help) {
                                 helpMenu();
-                            } else {
+                            }
+                            else{
                                 isValid = myTest.getValid();
                                 validateUserInput(isValid);
                                 noun = myTest.noun;
@@ -206,6 +235,7 @@ public class GameEngine {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+        subMenu();
     }
 
     private void helpMenu() {
@@ -224,7 +254,6 @@ public class GameEngine {
                     "Enter 'go', 'look' , or 'take' as a verb");
         }
     }
-
     private void quitGame() {
         try {
             List<String> allLines = Files.readAllLines(Paths.get("src/resources/quitNeighbor.txt"));
@@ -234,7 +263,6 @@ public class GameEngine {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        quit = true;
     }
 
     private void clearScreen() {
