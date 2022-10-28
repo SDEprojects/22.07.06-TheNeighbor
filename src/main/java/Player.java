@@ -1,6 +1,5 @@
 package main.java;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class Player extends Character {
@@ -8,7 +7,7 @@ public class Player extends Character {
     Scanner scanner = new Scanner(System.in);
     TextParser myTest = null;
 
-    String input;
+    private String input;
     private int locationIndex = 0;
     private String currentLocation;
     private boolean isValid = false;
@@ -17,13 +16,15 @@ public class Player extends Character {
 
 
     public void playerInput() {
-        input = scanner.nextLine().toLowerCase();
         while (!isValid) {
             System.out.print("Enter an action:\n" +
                     ">");
+            input = scanner.nextLine().toLowerCase();
             myTest = new TextParser(input); // pass user input to new TextParser
             isValid = myTest.getValid(); // set the loop validation to TextParser validation
-            if (!isValid) { // if not valid, will generate invalid message
+            if (myTest.getHelp()) { // if not valid, will generate invalid message
+                isValid = myTest.getHelp();
+            } else if (!isValid) {
                 System.out.println("\nThat is not a valid input. Please try again.\n" +
                         "Enter 'go', 'look' , or 'take' as a verb");
             }

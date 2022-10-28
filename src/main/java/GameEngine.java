@@ -1,8 +1,5 @@
 package main.java;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -109,19 +106,15 @@ public class GameEngine {
         boolean gameOn = true;
         while (gameOn) {
             // Information output
-            System.out.println("You are in "
-                    + player.getLocation().get(player.getLocationIndex()).getName());
-            System.out.println("Your possible exit routes are"
-                    + player.getLocation().get(player.getLocationIndex()).getExit());
+            HUD(player);
             Thread.sleep(300);
-
             player.playerInput();
-            if (player.myTest.getHelp()) { // TODO: gets stuck in loop (doesn't recognize "help" keyword
+            if (player.myTest.getHelp()) {
                 helpMenu();
             } else if (player.myTest.getVerb().equals("go")) {
                 player.playerMove();
                 npc.setLocationIndex(npc.getLocationIndex());
-            } else {
+            } else if (player.myTest.getVerb().equals("look")) {
             }
 
         }
@@ -152,5 +145,15 @@ public class GameEngine {
         System.out.println("continue--to play the game");
         System.out.println("exit---to exit the game");
         System.out.println("******************************************");
+    }
+
+    private void HUD(Player player) {
+
+
+        System.out.println("\nYou are in the "
+                + player.getLocation().get(player.getLocationIndex()).getName());
+        System.out.println("Your possible exit routes are"
+                + player.getLocation().get(player.getLocationIndex()).getExit()
+                + "\n");
     }
 }
