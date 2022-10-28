@@ -1,5 +1,6 @@
 package main.java;
 
+import javax.sound.sampled.*;
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -11,7 +12,7 @@ public class GameEngine {
 
     boolean quit = false;
     Scanner scanner = new Scanner(System.in);
-
+    MusicPlayer audioPlayer = new MusicPlayer();
 
     public void execute() {
 
@@ -21,9 +22,12 @@ public class GameEngine {
         }
     }
 
+
+//("src/resources/thrillerAmbient.wav");
     private void gameTitle() {
 
         try {
+            audioPlayer.startPlayer("src/resources/thrillerAmbient.wav");
             List<String> allLines = Files.readAllLines(Paths.get("src/resources/asciiGame.txt"));
 
             for (String line : allLines) {
@@ -36,7 +40,7 @@ public class GameEngine {
                     break;
                 }
             }
-        } catch (IOException | InterruptedException e) {
+        } catch (IOException | InterruptedException | LineUnavailableException e) {
             e.printStackTrace();
         }
     }
@@ -78,6 +82,8 @@ public class GameEngine {
     private void intro() {
 
         try {
+            audioPlayer.stopPlayer();
+            audioPlayer.startPlayer("src/resources/lullaby.wav");
             List<String> allLines = Files.readAllLines(Paths.get("src/resources/GameStoryIntro.txt"));
 
             for (String line : allLines) {
@@ -91,7 +97,7 @@ public class GameEngine {
                 }
             }
 
-        } catch (IOException | InterruptedException e) {
+        } catch (IOException | InterruptedException | LineUnavailableException e) {
             e.printStackTrace();
         }
     }
@@ -122,11 +128,14 @@ public class GameEngine {
 
     private void quitGame() {
         try {
+            audioPlayer.stopPlayer();
+            audioPlayer.startPlayer("src/resources/evilLaugh.wav");
             List<String> allLines = Files.readAllLines(Paths.get("src/resources/quitNeighbor.txt"));
             for (String line : allLines) {
+                Thread.sleep(500);
                 System.out.println("\u001B[31m" + line + "\u001B[0m");
             }
-        } catch (IOException e) {
+        } catch (IOException | InterruptedException | LineUnavailableException e) {
             e.printStackTrace();
         }
         quit = true;
