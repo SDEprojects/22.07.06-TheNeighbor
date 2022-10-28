@@ -8,6 +8,7 @@ public class Player extends Character {
     Scanner scanner = new Scanner(System.in);
     TextParser myTest = null;
 
+    String input;
     private int locationIndex = 0;
     private String currentLocation;
     private boolean isValid = false;
@@ -16,37 +17,22 @@ public class Player extends Character {
 
 
     public void playerInput() {
-        String input;
+        input = scanner.nextLine().toLowerCase();
         while (!isValid) {
             System.out.print("Enter an action:\n" +
                     ">");
-            input = scanner.nextLine().toLowerCase(); //get user input
             myTest = new TextParser(input); // pass user input to new TextParser
             isValid = myTest.getValid(); // set the loop validation to TextParser validation
-            validateUserInput(isValid);
             if (!isValid) { // if not valid, will generate invalid message
                 System.out.println("\nThat is not a valid input. Please try again.\n" +
                         "Enter 'go', 'look' , or 'take' as a verb");
             }
-
         }
+        isValid = false;
     }
 
 
     public void playerMove() {
-
-
-        for (int i = 0; i < getLocation().size(); i++) {
-            setLocationIndex(i);
-        }
-    }
-
-    private void validateUserInput(boolean isValid) {
-
-    }
-
-    @Override
-    public void setLocationIndex(int locationIndex) {
         switch (myTest.getNoun()) {
             case "north":
                 currentLocation = getLocation().get(locationIndex).getExit().getNorth();
@@ -61,10 +47,20 @@ public class Player extends Character {
                 currentLocation = getLocation().get(locationIndex).getExit().getWest();
                 break;
             case "stairs":
-                locationIndex = getLocation().indexOf(getLocation().get(getLocationIndex()).getExit().getStairs());
+                currentLocation = getLocation().get(locationIndex).getExit().getStairs();
                 break;
         }
 
+        for (int i = 0; i < getLocation().size(); i++) {
+            if (getLocation().get(i).getName().equals(currentLocation)) {
+                locationIndex = i;
+                setLocationIndex(locationIndex);
+            }
+        }
+    }
+
+    @Override
+    public void setLocationIndex(int locationIndex) {
         super.setLocationIndex(locationIndex);
     }
 }

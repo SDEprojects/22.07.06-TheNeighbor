@@ -115,9 +115,8 @@ public class GameEngine {
                     + player.getLocation().get(player.getLocationIndex()).getExit());
             Thread.sleep(300);
 
-            //player input
             player.playerInput();
-            if (player.myTest.getHelp()) {
+            if (player.myTest.getHelp()) { // TODO: gets stuck in loop (doesn't recognize "help" keyword
                 helpMenu();
             } else if (player.myTest.getVerb().equals("go")) {
                 player.playerMove();
