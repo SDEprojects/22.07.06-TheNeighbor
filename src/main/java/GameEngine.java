@@ -1,14 +1,10 @@
 package main.java;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
-
 
 
 public class GameEngine {
@@ -102,37 +98,62 @@ public class GameEngine {
 
 
     private void startGame() throws InterruptedException {
-        // gameController();
+        // Generates Player & NPC
+        Player player = new Player();
+        Neighbor npc = new Neighbor();
+
+        // Game loop
         boolean gameOn = true;
-
-        // player starts from the basement
-        System.out.println("You are starting from a basement\n\n");
-        System.out.println("Your possible exit routes are: \n");
-        System.out.println("Exit{north=''}");
-
         while (gameOn) {
-
-            Player player = new Player();
-            // player input
+            // Information output
+            HUD(player);
+            Thread.sleep(300);
             player.playerInput();
-            // player movement
-            player.playerMove();
-        }
-    }
-        private void quitGame () {
-            try {
-                List<String> allLines = Files.readAllLines(Paths.get("src/resources/quitNeighbor.txt"));
-                for (String line : allLines) {
-                    System.out.println("\u001B[31m" + line + "\u001B[0m");
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
+            if (player.myTest.getHelp()) {
+                helpMenu();
+            } else if (player.myTest.getVerb().equals("go")) {
+                player.playerMove();
+                npc.setLocationIndex(npc.getLocationIndex());
+            } else if (player.myTest.getVerb().equals("look")) {
             }
-            quit = true;
-        }
 
-        private void clearScreen () {
-            System.out.print("\033[H\033[2J");
-            System.out.flush();
         }
     }
+
+    private void quitGame() {
+        try {
+            List<String> allLines = Files.readAllLines(Paths.get("src/resources/quitNeighbor.txt"));
+            for (String line : allLines) {
+                System.out.println("\u001B[31m" + line + "\u001B[0m");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        quit = true;
+    }
+
+    private void clearScreen() {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+    }
+
+    private void helpMenu() {
+        System.out.println("Possible commands: \n");
+        System.out.println("****************************************");
+        System.out.println("--go north   --go south  --go east\n" +
+                "--go west   --go stairs \n \n OR");
+        System.out.println("continue--to play the game");
+        System.out.println("exit---to exit the game");
+        System.out.println("******************************************");
+    }
+
+    private void HUD(Player player) {
+
+
+        System.out.println("\nYou are in the "
+                + player.getLocation().get(player.getLocationIndex()).getName());
+        System.out.println("Your possible exit routes are"
+                + player.getLocation().get(player.getLocationIndex()).getExit()
+                + "\n");
+    }
+}

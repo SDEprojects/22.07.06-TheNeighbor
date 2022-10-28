@@ -36,6 +36,9 @@ public final class TextParser {
                 case "look":
                     this.verb = "look";
                     break;
+                case "help":
+                    this.verb = "help";
+                    break;
             }
         }
         if (this.verb == null) {
@@ -76,15 +79,12 @@ public final class TextParser {
     }
 
     public Boolean getHelp() {
-        for (int i = 0; i < t.length; i++) {
-            switch (t[i]) {
-                case "help":
-                    this.help = true;
-                    break;
-                default:
-                    this.help = false;
-
-            }
+        switch (getVerb()) {
+            case "help":
+                this.help = true;
+                break;
+            default:
+                this.help = false;
         }
         return this.help;
     }
@@ -109,7 +109,7 @@ public final class TextParser {
                 this.isValid = false;
                 break;
             default:
-               this.isValid = true;
+                this.isValid = true;
         }
 
         return this.isValid;
