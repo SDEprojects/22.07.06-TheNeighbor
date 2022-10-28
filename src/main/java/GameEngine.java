@@ -1,6 +1,8 @@
 package main.java;
 
+import javax.sound.sampled.*;
 import java.io.DataInputStream;
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -11,7 +13,10 @@ public class GameEngine {
 
     boolean quit = false;
     Scanner scanner = new Scanner(System.in);
+    Clip audioClip = AudioSystem.getClip();
 
+    public GameEngine() throws LineUnavailableException {
+    }
 
     public void execute() {
 
@@ -20,10 +25,21 @@ public class GameEngine {
             menu();
         }
     }
+    private void musicPlayer(String path){
+        try {
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(new File(path));
+            audioClip.open(audioStream);
+            audioClip.loop(0);
+        } catch (UnsupportedAudioFileException | LineUnavailableException | IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     private void gameTitle() {
 
         try {
+            musicPlayer("src/resources/thrillerAmbient.wav");
             List<String> allLines = Files.readAllLines(Paths.get("src/resources/asciiGame.txt"));
 
             for (String line : allLines) {
@@ -78,6 +94,8 @@ public class GameEngine {
     private void intro() {
 
         try {
+            audioClip.close();
+            musicPlayer("src/resources/lullaby.wav");
             List<String> allLines = Files.readAllLines(Paths.get("src/resources/GameStoryIntro.txt"));
 
             for (String line : allLines) {
@@ -87,6 +105,7 @@ public class GameEngine {
                     System.out.println("\u001B[31m" + line + "\u001B[0m");
                 } else {
                     scanner.nextLine();
+                    audioClip.close();
                     break;
                 }
             }
@@ -122,11 +141,14 @@ public class GameEngine {
 
     private void quitGame() {
         try {
+            audioClip.close();
+            musicPlayer("src/resources/evilLaugh.wav");
             List<String> allLines = Files.readAllLines(Paths.get("src/resources/quitNeighbor.txt"));
             for (String line : allLines) {
+                Thread.sleep(500);
                 System.out.println("\u001B[31m" + line + "\u001B[0m");
             }
-        } catch (IOException e) {
+        } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
         quit = true;
