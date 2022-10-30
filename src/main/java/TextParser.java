@@ -114,4 +114,12 @@ public final class TextParser {
 
         return this.isValid;
     }
+
+    public String[] getT() {
+        return t;
+    }
+
+    private void setT(String[] t) {
+        this.t = t;
+    }
 }

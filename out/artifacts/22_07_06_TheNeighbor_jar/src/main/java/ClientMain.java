@@ -1,19 +1,15 @@
 package main.java;
 
-import java.util.Scanner;
+
+import javax.sound.sampled.LineUnavailableException;
 
 public class ClientMain {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws LineUnavailableException {
 
-        Scanner scanner = new Scanner(System.in);
-        GameEngine display = new GameEngine();
-
-        boolean gameOn = true;
-        while (gameOn) {
-            display.execute();
+        GameEngine game = new GameEngine();
+        game.execute();
 
 
-        }
     }
-
 }
+
