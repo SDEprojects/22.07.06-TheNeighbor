@@ -1,11 +1,12 @@
 package main.java;
 
-import javax.sound.sampled.*;
+import javax.sound.sampled.LineUnavailableException;
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.*;
+import java.util.List;
+import java.util.Scanner;
 
 
 public class GameEngine {
@@ -23,7 +24,7 @@ public class GameEngine {
     }
 
 
-//("src/resources/thrillerAmbient.wav");
+    //("src/resources/thrillerAmbient.wav");
     private void gameTitle() {
 
         try {
@@ -119,8 +120,14 @@ public class GameEngine {
                 helpMenu();
             } else if (player.myTest.getVerb().equals("go")) {
                 player.playerMove();
+                if (player.winCheck()) {
+                    gameOn = false;
+                }
                 npc.setLocationIndex(npc.getLocationIndex());
             } else if (player.myTest.getVerb().equals("look")) {
+                player.playerLook();
+            } else if (player.myTest.getVerb().equals("take")) {
+                player.takeItem();
             }
 
         }
@@ -158,11 +165,18 @@ public class GameEngine {
 
     private void HUD(Player player) {
 
-
         System.out.println("\nYou are in the "
                 + player.getLocation().get(player.getLocationIndex()).getName());
         System.out.println("Your possible exit routes are"
                 + player.getLocation().get(player.getLocationIndex()).getExit()
                 + "\n");
+
+        if (!player.goodies.getInventory().isEmpty()) {
+            System.out.println("Your current inventory is:");
+            for (String inventory : player.goodies.getInventory())
+                System.out.println(inventory);
+        }
+
+
     }
 }
