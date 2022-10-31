@@ -263,5 +263,8 @@
       "east": "",
       "west": ""
     }
+  },
+  {
+    "name": "outside"
   }
 ]
