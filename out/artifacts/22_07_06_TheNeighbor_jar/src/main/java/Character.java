@@ -11,7 +11,7 @@ public class Character {
     private List<Items> items;
     private List<Location> location;
     private String name;
-    private int locationIndex = 0;
+    private int locationIndex;
 
     // instantiate JSON mapper
     ObjectMapper mapper = new ObjectMapper();
@@ -30,8 +30,8 @@ public class Character {
         return locationIndex;
     }
 
-    public void setLocationIndex(int locationIndex) {
-        this.locationIndex = locationIndex;
+    public void setLocationIndex(int index) {
+        this.locationIndex = index;
     }
 
     public List<Location> getLocation() {

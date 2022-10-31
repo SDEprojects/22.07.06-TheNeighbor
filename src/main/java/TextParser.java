@@ -94,6 +94,7 @@ public final class TextParser {
         return this.help;
     }
 
+
     public Boolean getExit() {
         switch (getVerb()) {
             case "exit":

@@ -27,7 +27,7 @@ public class Player extends Character {
                 isValid = myTest.getHelp();
             } else if (myTest.getVerb().equals("look")) {
                 isValid = true;
-            } else if (myTest.getVerb().equals("take")) {
+            } else if (myTest.getVerb().equals("take") && myTest.getT().length > 1) {
                 isValid = true;
             }else if (myTest.getExit()){
                 isValid = true;
@@ -84,7 +84,7 @@ public void playerMove() throws LineUnavailableException {
     }
 
     public void takeItem() {
-        if (myTest.getVerb().equals("take")) {
+        if (myTest.getVerb().equals("take") ) {
             if (getLocation().get(locationIndex).getItems() == null) {
                 System.out.println("There are no items to take in " + getLocation().get(locationIndex).getName());
             } else {
