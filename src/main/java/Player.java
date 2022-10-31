@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Player extends Character {
 
-    private final int suspicion = 0;
+    private int suspicion = 0;
     Scanner scanner = new Scanner(System.in);
     PlayerGoodies goodies = new PlayerGoodies();
     TextParser myTest = null;
@@ -16,7 +16,7 @@ public class Player extends Character {
 
     public void playerInput() {
         while (!isValid) {
-            System.out.print("Enter an action:\n" +
+            System.out.print("Type in a command (type help for possible commands):\n" +
                     ">");
             input = scanner.nextLine().toLowerCase();
             myTest = new TextParser(input); // pass user input to new TextParser
@@ -34,7 +34,6 @@ public class Player extends Character {
         }
         isValid = false;
     }
-
 
     public void playerMove() {
         switch (myTest.getNoun()) {
@@ -61,8 +60,9 @@ public class Player extends Character {
                 setLocationIndex(locationIndex);
             }
         }
-    }
 
+        setSuspicion(suspicion);
+    }
 
     public void playerLook() {
         if (myTest.getVerb().equals("look")) {
@@ -101,28 +101,38 @@ public class Player extends Character {
         }
     }
 
-
     public Boolean winCheck() {
         Boolean win = false;
         if ((goodies.getInventory().contains("wadded note") ||
                 goodies.getInventory().contains("bedside notepad")) &&
-                (getLocation().get(0).getExit().getSouth().equals("outside") ||
-                        getLocation().get(1).getExit().getNorth().equals("outside") ||
-                        getLocation().get(3).getExit().getNorth().equals("outside") ||
-                        getLocation().get(4).getExit().getWest().equals("outside") ||
-                        getLocation().get(6).getExit().getSouth().equals("outside") ||
-                        getLocation().get(7).getExit().getSouth().equals("outside") ||
-                        getLocation().get(8).getExit().getSouth().equals("outside") ||
-                        getLocation().get(9).getExit().getNorth().equals("outside") ||
-                        getLocation().get(10).getExit().getSouth().equals("outside"))) {
-            System.out.println(" You WIN!!");
+                (getLocation().get(getLocationIndex()).getName().equals("outside"))) {
             win = true;
         }
         return win;
     }
 
+    public Boolean lossCheck(Player player, Neighbor npc) {
+        Boolean lose = false;
+        if (player.getLocationIndex() == npc.getLocationIndex()) {
+            lose = true;
+        } else if (player.getLocation().get(locationIndex).getName().equals("outside") &&
+                (!goodies.getInventory().contains("wadded note") && !goodies.getInventory().contains("bedside notepad"))
+        ) {
+            lose = true;
+        }
 
+        return lose;
+    }
 
+    public int getSuspicion() {
+        return suspicion;
+    }
+
+    private void setSuspicion(int suspicion) {
+        this.suspicion = suspicion + 5;
+    }
+
+    // Character override methods
     @Override
     public void setLocationIndex(int locationIndex) {
         super.setLocationIndex(locationIndex);
