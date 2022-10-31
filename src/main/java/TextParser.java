@@ -39,6 +39,7 @@ public final class TextParser {
                 case "help":
                     this.verb = "help";
                     break;
+
             }
         }
         if (this.verb == null) {

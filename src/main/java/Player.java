@@ -1,5 +1,6 @@
 package main.java;
 
+import javax.sound.sampled.LineUnavailableException;
 import java.util.Scanner;
 
 public class Player extends Character {
@@ -7,6 +8,7 @@ public class Player extends Character {
     private int suspicion = 0;
     Scanner scanner = new Scanner(System.in);
     PlayerGoodies goodies = new PlayerGoodies();
+    MusicPlayer audio = new MusicPlayer();
     TextParser myTest = null;
     private String input;
     private int locationIndex = 0;
@@ -16,7 +18,7 @@ public class Player extends Character {
 
     public void playerInput() {
         while (!isValid) {
-            System.out.print("Type in a command (type help for possible commands):\n" +
+            System.out.print("Ⲉⲛⲧⲉꞅ ⲁⲛ ⲁⲥⲧⲓⲟⲛ:\n" +
                     ">");
             input = scanner.nextLine().toLowerCase();
             myTest = new TextParser(input); // pass user input to new TextParser
@@ -35,21 +37,26 @@ public class Player extends Character {
         isValid = false;
     }
 
-    public void playerMove() {
+public void playerMove() throws LineUnavailableException {
         switch (myTest.getNoun()) {
             case "north":
+                audio.startPlayer("src/resources/footsteps.wav");
                 currentLocation = getLocation().get(locationIndex).getExit().getNorth();
                 break;
             case "south":
+                audio.startPlayer("src/resources/footsteps.wav");
                 currentLocation = getLocation().get(locationIndex).getExit().getSouth();
                 break;
             case "east":
+                audio.startPlayer("src/resources/footsteps.wav");
                 currentLocation = getLocation().get(locationIndex).getExit().getEast();
                 break;
             case "west":
+                audio.startPlayer("src/resources/footsteps.wav");
                 currentLocation = getLocation().get(locationIndex).getExit().getWest();
                 break;
             case "stairs":
+                audio.startPlayer("src/resources/stepsInStairs.wav");
                 currentLocation = getLocation().get(locationIndex).getExit().getStairs();
                 break;
         }
@@ -60,7 +67,6 @@ public class Player extends Character {
                 setLocationIndex(locationIndex);
             }
         }
-
         setSuspicion(suspicion);
     }
 
