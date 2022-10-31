@@ -29,7 +29,10 @@ public class Player extends Character {
                 isValid = true;
             } else if (myTest.getVerb().equals("take")) {
                 isValid = true;
-            } else if (!isValid) {
+            }else if (myTest.getExit()){
+                isValid = true;
+            }
+            else if (!isValid) {
                 System.out.println("\nThat is not a valid input. Please try again.\n" +
                         "Enter 'go', 'look' , or 'take' as a verb");
             }
@@ -112,6 +115,7 @@ public void playerMove() throws LineUnavailableException {
         if ((goodies.getInventory().contains("wadded note") ||
                 goodies.getInventory().contains("bedside notepad")) &&
                 (getLocation().get(getLocationIndex()).getName().equals("outside"))) {
+            System.out.println("You made it outside!!!");
             win = true;
         }
         return win;
@@ -124,6 +128,10 @@ public void playerMove() throws LineUnavailableException {
         } else if (player.getLocation().get(locationIndex).getName().equals("outside") &&
                 (!goodies.getInventory().contains("wadded note") && !goodies.getInventory().contains("bedside notepad"))
         ) {
+            System.out.println("You didn't find the security code....");
+            lose = true;
+        }else if (getSuspicion() == 100){
+            System.out.println("The neighbor knows you're in the house!! You're caught!!");
             lose = true;
         }
 
@@ -141,6 +149,7 @@ public void playerMove() throws LineUnavailableException {
     // Character override methods
     @Override
     public void setLocationIndex(int locationIndex) {
+        locationIndex = this.locationIndex;
         super.setLocationIndex(locationIndex);
     }
 }

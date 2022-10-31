@@ -14,6 +14,7 @@ public class GameEngine {
     boolean quit = false;
     Scanner scanner = new Scanner(System.in);
     MusicPlayer audioPlayer = new MusicPlayer();
+    AsciiArt text = new AsciiArt();
 
     public void execute() {
 
@@ -111,7 +112,8 @@ public class GameEngine {
         audioPlayer.loopSound();
         Player player = new Player();
         Neighbor npc = new Neighbor();
-        PlayerGoodies goodies = new PlayerGoodies();
+        npc.setLocationIndex(-1);
+        int turnCount = 0;
 
         // Game loop
         boolean gameOn = true;
@@ -120,24 +122,38 @@ public class GameEngine {
             if (!player.winCheck()) {
                 HUD(player);
                 player.playerInput();
+
                 if (player.myTest.getHelp()) {
                     helpMenu();
+                    System.out.println("Press 'Enter' to continue");
+                    try {
+                        Thread.sleep(System.in.read());
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    clearScreen();
+                    audioPlayer.startPlayer("src/resources/gameplaySound.wav");
                 } else if (player.myTest.getVerb().equals("go")) {
                     player.playerMove();
                     npc.setLocationIndex(npc.getLocationIndex());
-                    System.out.println("player location index: " + player.getLocationIndex());
-                    System.out.println("npc location index: " + npc.getLocationIndex());
+                    turnCount++;
+                    if (gameOn && turnCount == 1) {
+                        System.out.println("You hear a vague triple beep and realize the house alarm has been set....\n"
+                                + "Maybe there's a code written somewhere....");
+                    }
                 } else if (player.myTest.getVerb().equals("look")) {
                     player.playerLook();
                 } else if (player.myTest.getVerb().equals("take")) {
                     player.takeItem();
+                } else if (player.myTest.getExit()) {
+                    gameOn = false;
                 }
             }
 
-            if(player.winCheck()){
-                System.out.println(" You WIN!!");
+            if (player.winCheck()) {
+                System.out.println("You WIN!!");
                 gameOn = false;
-            }else if (player.lossCheck(player, npc)){
+            } else if (player.lossCheck(player, npc)) {
                 System.out.println("Sorry, but you lose.....");
                 gameOn = false;
             }
@@ -182,16 +198,16 @@ public class GameEngine {
 
     private void HUD(Player player) {
 
-        //ascii code for "you are in"
-        System.out.println("\nჄ\uD835\uDDAEυ Ꭿᖇ∈ ⫯ﬡ \uD835\uDF0FᏂ∈ "
+        //ascii code for "You are in"
+        System.out.println(text.youAreIn
                 + player.getLocation().get(player.getLocationIndex()).getName());
         //ascii code for "your possible routes are"
-        System.out.println("Ⴤᗝυᖇ ᖰ\uD835\uDDAE⟆⟆⫯ᑲ\uD835\uDE2D∈ ᖇ\uD835\uDDAEυ\uD835\uDF0F∈⟆ Ꭿᖇ∈ "
+        System.out.println(text.yourPossibleRoutesAre
                 + player.getLocation().get(player.getLocationIndex()).getExit()
                 + "\n");
         if (!player.goodies.getInventory().isEmpty()) {
-            //ascii code for ""
-            System.out.println("Ⲩⲟ\uD800\uDF35ꞅ ⲥ\uD800\uDF35ꞅꞅⲉⲛⲧ ⲓⲛ\uD835\uDCFFⲉⲛⲧⲟꞅⲩ ⲓ\uD835\uDED3:");
+            //ascii code for "Your current inventory:"
+            System.out.println(text.yourCurrentInventory);
             for (String inventory : player.goodies.getInventory())
                 System.out.println(inventory);
         }
