@@ -1,11 +1,12 @@
 package main.java;
 
-import javax.sound.sampled.*;
+import javax.sound.sampled.LineUnavailableException;
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.*;
+import java.util.List;
+import java.util.Scanner;
 
 
 public class GameEngine {
@@ -13,6 +14,7 @@ public class GameEngine {
     boolean quit = false;
     Scanner scanner = new Scanner(System.in);
     MusicPlayer audioPlayer = new MusicPlayer();
+    AsciiArt text = new AsciiArt();
 
     public void execute() {
 
@@ -23,7 +25,7 @@ public class GameEngine {
     }
 
 
-//("src/resources/thrillerAmbient.wav");
+    //("src/resources/thrillerAmbient.wav");
     private void gameTitle() {
 
         try {
@@ -46,7 +48,7 @@ public class GameEngine {
     }
 
     private void menu() {
-
+        audioPlayer.stopPlayer();
         System.out.println("\u001B[31m" + ".--------------.\n|" + "\u001B[0m" + " MENU OPTIONS " + "\u001B[31m" +
                 "|\n'--------------'" + "\u001B[0m");
         System.out.println("Please type your option:\n| INTRO |-------| START GAME |-------| QUIT |\n");
@@ -63,7 +65,7 @@ public class GameEngine {
                 clearScreen();
                 try {
                     startGame();
-                } catch (InterruptedException e) {
+                } catch (InterruptedException | LineUnavailableException e) {
                     e.printStackTrace();
                 }
                 break;
@@ -103,26 +105,76 @@ public class GameEngine {
     }
 
 
-    private void startGame() throws InterruptedException {
+    private void startGame() throws InterruptedException, LineUnavailableException {
         // Generates Player & NPC
+        audioPlayer.stopPlayer();
+        audioPlayer.startPlayer("src/resources/gameplaySound.wav");
+        audioPlayer.loopSound();
         Player player = new Player();
         Neighbor npc = new Neighbor();
+        npc.setLocationIndex(-1);
+        int turnCount = 0;
 
         // Game loop
         boolean gameOn = true;
         while (gameOn) {
             // Information output
-            HUD(player);
-            Thread.sleep(300);
-            player.playerInput();
-            if (player.myTest.getHelp()) {
-                helpMenu();
-            } else if (player.myTest.getVerb().equals("go")) {
-                player.playerMove();
-                npc.setLocationIndex(npc.getLocationIndex());
-            } else if (player.myTest.getVerb().equals("look")) {
+            if (!player.winCheck()) {
+                HUD(player);
+                player.playerInput();
+
+                if (player.myTest.getHelp()) {
+                    helpMenu();
+                    System.out.println("Press 'Enter' to continue");
+                    try {
+                        Thread.sleep(System.in.read());
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    clearScreen();
+                    audioPlayer.startPlayer("src/resources/gameplaySound.wav");
+                } else if (player.myTest.getVerb().equals("go")) {
+                    player.playerMove();
+                    npc.setLocationIndex(npc.getLocationIndex());
+                    turnCount++;
+                    if (gameOn && turnCount == 1) {
+                        System.out.println("You hear a vague triple beep and realize the house alarm has been set....\n"
+                                + "Maybe there's a code written somewhere....");
+                    }
+                } else if (player.myTest.getVerb().equals("look")) {
+                    player.playerLook();
+                } else if (player.myTest.getVerb().equals("take")) {
+                    player.takeItem();
+                } else if (player.myTest.getExit()) {
+                    gameOn = false;
+                }
             }
 
+            if (player.winCheck()) {
+                System.out.println("You WIN!!");
+                try {
+                    audioPlayer.stopPlayer();
+                    audioPlayer.startPlayer("src/resources/outrosong.wav");
+                    List<String> allLines = Files.readAllLines(Paths.get("src/resources/outro.txt"));
+
+                    for (String line : allLines) {
+                        DataInputStream dis = new DataInputStream(System.in);
+                        if (dis.available() == 0) {
+                            Thread.sleep(1000);
+                            System.out.println("\u001B[31m" + line + "\u001B[0m");
+                        } else {
+                            scanner.nextLine();
+                            break;
+                        }
+                    }
+                }catch(IOException e) {
+                    e.printStackTrace();
+                }
+                gameOn = false;
+            } else if (player.lossCheck(player, npc)) {
+                    System.out.println("Sorry, but you lose.....");
+                gameOn = false;
+            }
         }
     }
 
@@ -147,22 +199,35 @@ public class GameEngine {
     }
 
     private void helpMenu() {
-        System.out.println("Possible commands: \n");
-        System.out.println("****************************************");
-        System.out.println("--go north   --go south  --go east\n" +
-                "--go west   --go stairs \n \n OR");
-        System.out.println("continue--to play the game");
-        System.out.println("exit---to exit the game");
-        System.out.println("******************************************");
+        try {
+            clearScreen();
+            audioPlayer.stopPlayer();
+            audioPlayer.startPlayer("src/resources/mapSound.wav");
+            List<String> allLines = Files.readAllLines(Paths.get("src/resources/helpMenu.txt"));
+            for (String line : allLines) {
+                Thread.sleep(100);
+                System.out.println("\u001B[31m" + line + "\u001B[0m");
+            }
+        } catch (IOException | InterruptedException | LineUnavailableException e) {
+            e.printStackTrace();
+        }
+
     }
 
     private void HUD(Player player) {
 
-
-        System.out.println("\nYou are in the "
+        //ascii code for "You are in"
+        System.out.println(text.youAreIn
                 + player.getLocation().get(player.getLocationIndex()).getName());
-        System.out.println("Your possible exit routes are"
+        //ascii code for "your possible routes are"
+        System.out.println(text.yourPossibleRoutesAre
                 + player.getLocation().get(player.getLocationIndex()).getExit()
                 + "\n");
+        if (!player.goodies.getInventory().isEmpty()) {
+            //ascii code for "Your current inventory:"
+            System.out.println(text.yourCurrentInventory);
+            for (String inventory : player.goodies.getInventory())
+                System.out.println(inventory);
+        }
     }
 }

@@ -2,7 +2,7 @@ package main.java;
 
 public final class TextParser {
     String input, verb, noun;
-    boolean isValid, help;
+    boolean isValid, help, exit;
     String[] t;
 
     // constructor
@@ -39,6 +39,11 @@ public final class TextParser {
                 case "help":
                     this.verb = "help";
                     break;
+                case "quit":
+                case "exit":
+                    this.verb = "exit";
+                    break;
+
             }
         }
         if (this.verb == null) {
@@ -89,6 +94,17 @@ public final class TextParser {
         return this.help;
     }
 
+    public Boolean getExit() {
+        switch (getVerb()) {
+            case "exit":
+                this.help = true;
+                break;
+            default:
+                this.help = false;
+        }
+        return this.help;
+    }
+
     public Boolean getValid() {
         return setValid();
     }
@@ -113,5 +129,13 @@ public final class TextParser {
         }
 
         return this.isValid;
+    }
+
+    public String[] getT() {
+        return t;
+    }
+
+    private void setT(String[] t) {
+        this.t = t;
     }
 }
