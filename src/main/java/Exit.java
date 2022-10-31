@@ -61,12 +61,12 @@ public class Exit {
 
     @Override
     public String toString() {
-        return "Exit{" +
+        return "Exit [" +
                 "north='" + north + '\'' +
                 ", south='" + south + '\'' +
                 ", east='" + east + '\'' +
                 ", west='" + west + '\'' +
                 ", stairs='" + stairs + '\'' +
-                '}';
+                ']';
     }
 }

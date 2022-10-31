@@ -64,7 +64,7 @@ public class GameEngine {
                 clearScreen();
                 try {
                     startGame();
-                } catch (InterruptedException e) {
+                } catch (InterruptedException | LineUnavailableException e) {
                     e.printStackTrace();
                 }
                 break;
@@ -104,8 +104,11 @@ public class GameEngine {
     }
 
 
-    private void startGame() throws InterruptedException {
+    private void startGame() throws InterruptedException, LineUnavailableException {
         // Generates Player & NPC
+        audioPlayer.stopPlayer();
+        audioPlayer.startPlayer("src/resources/gameplaySound.wav");
+        audioPlayer.loopSound();
         Player player = new Player();
         Neighbor npc = new Neighbor();
 
@@ -118,6 +121,15 @@ public class GameEngine {
             player.playerInput();
             if (player.myTest.getHelp()) {
                 helpMenu();
+                System.out.println("Type 'continue' to continue\n");
+                String input = scanner.nextLine().toLowerCase();
+                audioPlayer.startPlayer("src/resources/gameplaySound.wav");
+
+                while (!input.equals("continue")) {
+                    System.out.println("Invalid command");
+                    input = scanner.nextLine();
+                }
+                clearScreen();
             } else if (player.myTest.getVerb().equals("go")) {
                 player.playerMove();
                 if (player.winCheck()) {
@@ -154,25 +166,33 @@ public class GameEngine {
     }
 
     private void helpMenu() {
-        System.out.println("Possible commands: \n");
-        System.out.println("****************************************");
-        System.out.println("--go north   --go south  --go east\n" +
-                "--go west   --go stairs \n \n OR");
-        System.out.println("continue--to play the game");
-        System.out.println("exit---to exit the game");
-        System.out.println("******************************************");
+        try {
+            clearScreen();
+            audioPlayer.stopPlayer();
+            audioPlayer.startPlayer("src/resources/mapSound.wav");
+            List<String> allLines = Files.readAllLines(Paths.get("src/resources/helpMenu.txt"));
+            for (String line : allLines) {
+                Thread.sleep(100);
+                System.out.println("\u001B[31m" + line + "\u001B[0m");
+            }
+        } catch (IOException | InterruptedException | LineUnavailableException e) {
+            e.printStackTrace();
+        }
+
     }
 
     private void HUD(Player player) {
-
-        System.out.println("\nYou are in the "
+        //ascii code for "you are in"
+        System.out.println("\nჄ\uD835\uDDAEυ Ꭿᖇ∈ ⫯ﬡ \uD835\uDF0FᏂ∈ "
                 + player.getLocation().get(player.getLocationIndex()).getName());
-        System.out.println("Your possible exit routes are"
+        //ascii code for "your possible routes are"
+        System.out.println("Ⴤᗝυᖇ ᖰ\uD835\uDDAE⟆⟆⫯ᑲ\uD835\uDE2D∈ ᖇ\uD835\uDDAEυ\uD835\uDF0F∈⟆ Ꭿᖇ∈ "
                 + player.getLocation().get(player.getLocationIndex()).getExit()
                 + "\n");
 
         if (!player.goodies.getInventory().isEmpty()) {
-            System.out.println("Your current inventory is:");
+            //ascii code for ""
+            System.out.println("Ⲩⲟ\uD800\uDF35ꞅ ⲥ\uD800\uDF35ꞅꞅⲉⲛⲧ ⲓⲛ\uD835\uDCFFⲉⲛⲧⲟꞅⲩ ⲓ\uD835\uDED3:");
             for (String inventory : player.goodies.getInventory())
                 System.out.println(inventory);
         }
