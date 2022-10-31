@@ -61,10 +61,10 @@ public class Location {
 
     @Override
     public String toString() {
-        return "Location{" +
+        return "Location [" +
                 "name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", exit=" + exit +
-                '}';
+                ']';
     }
 }

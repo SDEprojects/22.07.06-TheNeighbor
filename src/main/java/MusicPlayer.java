@@ -5,7 +5,10 @@ import java.io.File;
 import java.io.IOException;
 
 public class MusicPlayer {
+    //Variables / fields
     private Clip audioClip;
+
+    //constructor
     public MusicPlayer() {
 
     }
@@ -23,5 +26,8 @@ public class MusicPlayer {
     public void stopPlayer(){
         audioClip.close();
 
+    }
+    public void loopSound(){
+        audioClip.loop(audioClip.LOOP_CONTINUOUSLY);
     }
 }
