@@ -152,9 +152,27 @@ public class GameEngine {
 
             if (player.winCheck()) {
                 System.out.println("You WIN!!");
+                try {
+                    audioPlayer.stopPlayer();
+                    audioPlayer.startPlayer("src/resources/outrosong.wav");
+                    List<String> allLines = Files.readAllLines(Paths.get("src/resources/outro.txt"));
+
+                    for (String line : allLines) {
+                        DataInputStream dis = new DataInputStream(System.in);
+                        if (dis.available() == 0) {
+                            Thread.sleep(1000);
+                            System.out.println("\u001B[31m" + line + "\u001B[0m");
+                        } else {
+                            scanner.nextLine();
+                            break;
+                        }
+                    }
+                }catch(IOException e) {
+                    e.printStackTrace();
+                }
                 gameOn = false;
             } else if (player.lossCheck(player, npc)) {
-                System.out.println("Sorry, but you lose.....");
+                    System.out.println("Sorry, but you lose.....");
                 gameOn = false;
             }
         }
