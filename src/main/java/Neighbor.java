@@ -1,8 +1,8 @@
 package main.java;
 
 public class Neighbor extends Character {
-    private int pathIndex = 0;
-    private int lastLocIndex = pathIndex;
+    int pathIndex = -1;
+    private int lastLocIndex;
     private static final int[] PATH = {20, 19, 21, 19, 11, 12, 13, 12, 14, 12, 15, 16, 15, 17, 15, 18, 15, 12, 11, 19, 20};
 
     // no constructor needed - zero argument by default
@@ -10,14 +10,20 @@ public class Neighbor extends Character {
     // Override methods
     @Override
     public void setLocationIndex(int locationIndex) {
-        if ((pathIndex < PATH.length && lastLocIndex < pathIndex)
-                || pathIndex == 0) {
+        if (pathIndex == 0) {
             lastLocIndex = pathIndex;
             pathIndex++;
-        } else {
+        } else if (pathIndex < PATH.length - 1) {
+            lastLocIndex = pathIndex;
+            pathIndex++;
+        } else if (pathIndex == PATH.length -1) {
+            lastLocIndex = pathIndex;
+            pathIndex--;
+        } else if (pathIndex < lastLocIndex) {
             lastLocIndex = pathIndex;
             pathIndex--;
         }
+
         locationIndex = PATH[pathIndex];
 
         super.setLocationIndex(locationIndex);
